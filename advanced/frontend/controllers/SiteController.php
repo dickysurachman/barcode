@@ -136,18 +136,18 @@ class SiteController extends Controller
         if ($model->load(Yii::$app->request->post())) {
             if(is_null($model->add_who) or $model->add_who=="") {
             $grup=Yii::$app->db->createCommand("select id_grup as id,count(id) as jml from scan 
-                where id_perusahaan=".Yii::$app->user->identity->id_perusahaan." and  id in (select id from barcode_retur where tanggal between '".$model->tgl_a ."' and '".$model->tgl_b."') 
+                where id_perusahaan=".Yii::$app->user->identity->id_perusahaan." and  barcode in (select barcode from barcode_retur where tanggal between '".$model->tgl_a ."' and '".$model->tgl_b."') 
                 group by id_grup")->queryAll();
             $user=Yii::$app->db->createCommand("select add_who as id,count(id) as jml from scan 
-                where id_perusahaan=".Yii::$app->user->identity->id_perusahaan." and  id in (select id from barcode_retur where tanggal between '".$model->tgl_a ."' and '".$model->tgl_b."') 
+                where id_perusahaan=".Yii::$app->user->identity->id_perusahaan." and  barcode in (select barcode from barcode_retur where tanggal between '".$model->tgl_a ."' and '".$model->tgl_b."') 
                 group by add_who")->queryAll();
             } else {
             $grup=Yii::$app->db->createCommand("select id_grup as id,count(id) as jml from scan 
-                where id_perusahaan=".Yii::$app->user->identity->id_perusahaan." and  id in (select id from barcode_retur where tanggal between '".$model->tgl_a ."' and '".$model->tgl_b."'
+                where id_perusahaan=".Yii::$app->user->identity->id_perusahaan." and  barcode in (select barcode from barcode_retur where tanggal between '".$model->tgl_a ."' and '".$model->tgl_b."'
                 and add_who=".$model->add_who.")
                 group by id_grup")->queryAll();
             $user=Yii::$app->db->createCommand("select add_who as id,count(id) as jml from scan 
-                where id_perusahaan=".Yii::$app->user->identity->id_perusahaan." and  id in (select id from barcode_retur where tanggal between '".$model->tgl_a ."' and '".$model->tgl_b."' 
+                where id_perusahaan=".Yii::$app->user->identity->id_perusahaan." and  barcode in (select barcode from barcode_retur where tanggal between '".$model->tgl_a ."' and '".$model->tgl_b."' 
                 and add_who=".$model->add_who.")
                 group by add_who")->queryAll();
             }
@@ -165,21 +165,21 @@ class SiteController extends Controller
         if ($model->load(Yii::$app->request->post())) {
             if(is_null($model->add_who) or $model->add_who=="") {
             $grup=Yii::$app->db->createCommand("select id_grup as id,count(id) as jml from scan 
-                where id_perusahaan=".Yii::$app->user->identity->id_perusahaan." and id in (select id from barcode_input where id_perusahaan=".Yii::$app->user->identity->id_perusahaan." and tanggal between '".$model->tgl_a ."' and '".$model->tgl_b."') 
+                where id_perusahaan=".Yii::$app->user->identity->id_perusahaan." and barcode in (select barcode from barcode_input where id_perusahaan=".Yii::$app->user->identity->id_perusahaan." and tanggal between '".$model->tgl_a ."' and '".$model->tgl_b."') 
                 group by id_grup")->queryAll();
             $user=Yii::$app->db->createCommand("select add_who as id,count(id) as jml from scan 
-                where id_perusahaan=".Yii::$app->user->identity->id_perusahaan." and id in (select id from  barcode_input where id_perusahaan=".Yii::$app->user->identity->id_perusahaan." and tanggal between '".$model->tgl_a ."' and '".$model->tgl_b."') 
+                where id_perusahaan=".Yii::$app->user->identity->id_perusahaan." and barcode in (select barcode from  barcode_input where id_perusahaan=".Yii::$app->user->identity->id_perusahaan." and tanggal between '".$model->tgl_a ."' and '".$model->tgl_b."') 
                 group by add_who")->queryAll();  
             $gagal=Yii::$app->db->createCommand("select tanggal,barcode from barcode_input 
                 where tanggal between '".$model->tgl_a ."' and '".$model->tgl_b."' and id_perusahaan=".Yii::$app->user->identity->id_perusahaan." and barcode not in (select barcode from scan where id_perusahaan=".Yii::$app->user->identity->id_perusahaan.")" 
                 )->queryAll();
             } else {
             $grup=Yii::$app->db->createCommand("select id_grup as id,count(id) as jml from scan 
-                where id_perusahaan=".Yii::$app->user->identity->id_perusahaan." and id in (select id from  barcode_input where id_perusahaan=".Yii::$app->user->identity->id_perusahaan." and tanggal between '".$model->tgl_a ."' and '".$model->tgl_b."'
+                where id_perusahaan=".Yii::$app->user->identity->id_perusahaan." and barcode in (select barcode from  barcode_input where id_perusahaan=".Yii::$app->user->identity->id_perusahaan." and tanggal between '".$model->tgl_a ."' and '".$model->tgl_b."'
                 and add_who=".$model->add_who.")
                 group by id_grup")->queryAll();
             $user=Yii::$app->db->createCommand("select add_who as id,count(id) as jml from scan 
-                where id_perusahaan=".Yii::$app->user->identity->id_perusahaan." and id in (select id from  barcode_input where tanggal between '".$model->tgl_a ."' and '".$model->tgl_b."' 
+                where id_perusahaan=".Yii::$app->user->identity->id_perusahaan." and barcode in (select barcode from  barcode_input where tanggal between '".$model->tgl_a ."' and '".$model->tgl_b."' 
                 and add_who=".$model->add_who." and id_perusahaan=".Yii::$app->user->identity->id_perusahaan.
                 " group by add_who")->queryAll(); 
             $gagal=Yii::$app->db->createCommand("select tanggal,barcode from barcode_input
