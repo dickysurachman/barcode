@@ -1,0 +1,1 @@
+create table `barcode_input`(`id` int(11))
