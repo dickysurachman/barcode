@@ -76,6 +76,19 @@ class Scan extends \yii\db\ActiveRecord
     {
         return $this->hasOne(User::className(), ['id' => 'edit_who']);
     }
+    public function getRetur()
+    {
+        return $this->hasOne(Barcoderetur::className(), ['barcode' => 'barcode']);
+    }
+    public function getInput()
+    {
+        return $this->hasOne(Barcoderetur::className(), ['barcode' => 'barcode']);
+    }
+
+
+
+
+
          public function beforeSave($insert)
     {
         if (parent::beforeSave($insert)) {
