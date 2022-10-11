@@ -50,7 +50,7 @@
                     ],
                     ['label' => 'Input Data', 'icon' => 'search', 'url' => '#',
                         'items' => [ 
-                            ['label' => 'Order', 'icon' => 'clone', 'url' => ['/inputan/index']],
+                            ['label' => 'Resi Order', 'icon' => 'clone', 'url' => ['/inputan/index']],
                             ['label' => 'Packing', 'icon' => 'barcode', 'url' => ['/site/scan']],
                             ['label' => 'Retur', 'icon' => 'info-circle', 'url' => ['/retur/index']],
                             ['label' => 'Scan Packing Kilat', 'icon' => 'hourglass-start', 'url' => ['/site/scanm']],
@@ -83,7 +83,7 @@
                     ['label' => 'Rubah Password', 'icon' => 'user', 'url' => ['/site/password']],
                     ['label' => 'Input Data', 'icon' => 'search', 'url' => '#',
                         'items' => [ 
-                            ['label' => 'Order', 'icon' => 'clone', 'url' => ['/inputan/index']],
+                            ['label' => 'Resi Order', 'icon' => 'clone', 'url' => ['/inputan/index']],
                             ['label' => 'Packing', 'icon' => 'barcode', 'url' => ['/site/scan']],
                             ['label' => 'Retur', 'icon' => 'info-circle', 'url' => ['/retur/index']],
                             ['label' => 'Scan Packing Kilat', 'icon' => 'hourglass-start', 'url' => ['/site/scanm']],
