@@ -9,7 +9,8 @@ use yii\helpers\ArrayHelper;
 $negara=ArrayHelper::map(Perusahaan::find()->orderBy('nama')->all(),'id','nama');
 //$tipe=['Administrator','BPTU HPT','BIB','BET']
 $hapus=['Enable','Disable'];
-$tipe=['Admin Company','Superadmin']
+$tipe=['Admin Company','Superadmin'];
+
 ?>
 
 <div class="user-form">
@@ -26,6 +27,7 @@ $tipe=['Admin Company','Superadmin']
 
     <?php //= $form->field($model, 'updated_at')->textInput() ?>
 
+   
     <?= $form->field($model, 'tipe_user2')->dropDownList($tipe,array('prompt'=>'Silahkan Pilih'))  ?>
 
     <?= $form->field($model, 'id_perusahaan')->dropDownList($negara,array('prompt'=>'Silahkan Pilih')) ?>

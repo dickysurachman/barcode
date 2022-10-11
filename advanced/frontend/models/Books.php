@@ -24,8 +24,8 @@ class Books extends Model
         return [
             // name, email, subject and body are required
             
-            [['gambar'],'file'], 
-            //[['gambar'],'file', 'extensions' => 'jpg, png', 'mimeTypes' => 'image/jpeg, image/png'], 
+            //[['gambar'],'file'], 
+            [['gambar'],'file', 'extensions' => 'jpg, png', 'mimeTypes' => 'image/jpeg, image/png'], 
             //[['gambar'], 'file', 'extensions' => 'jpg,jpeg,png'],
             [['alamat','phone'],'safe'],
             // verifyCode needs to be entered correctly

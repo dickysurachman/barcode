@@ -39,8 +39,8 @@ class User extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['username',  'password_hash', 'email'], 'required'],
-            [['status', 'created_at', 'updated_at', 'tipe_user', 'id_profile','delete','id_perusahaan','id_profile'], 'integer'],
+            //[['username',  'password_hash', 'email'], 'required'],
+            [['status', 'created_at', 'updated_at', 'tipe_user', 'delete','id_perusahaan'], 'integer'],
             [['username', 'password_hash', 'password_reset_token', 'email'], 'string', 'max' => 255],
             [['nik'], 'string', 'max' => 50],
             [['nama'], 'string', 'max' => 150],
@@ -48,9 +48,9 @@ class User extends \yii\db\ActiveRecord
             [['auth_key'], 'string', 'max' => 32],
             [['username'], 'unique'],
             [['email'], 'unique'],
-            [['password_reset_token'], 'unique'],
-            [['id_perusahaan'], 'exist', 'skipOnError' => true, 'targetClass' => Perusahaan::className(), 'targetAttribute' => ['id_perusahaan' => 'id']],
-            [['id_profile'], 'exist', 'skipOnError' => true, 'targetClass' => Profile::className(), 'targetAttribute' => ['id_profile' => 'id']],
+            //[['password_reset_token'], 'unique'],
+            //[['id_perusahaan'], 'exist', 'skipOnError' => true, 'targetClass' => Perusahaan::className(), 'targetAttribute' => ['id_perusahaan' => 'id']],
+            //[['id_profile'], 'exist', 'skipOnError' => true, 'targetClass' => Profile::className(), 'targetAttribute' => ['id_profile' => 'id']],
 
         ];
     }
@@ -143,8 +143,10 @@ class User extends \yii\db\ActiveRecord
             $hh=Yii::$app->db->createCommand('SET FOREIGN_KEY_CHECKS=0');
             if($this->isNewRecord)
                     {
-                        if(Yii::$app->user->identity->tipe_user2<>1){
-                            $this->id_perusahaan=Yii::$app->user->identity->id_perusahaan;
+                        if(!Yii::$app->user->isGuest){                        
+                            if(Yii::$app->user->identity->tipe_user2<>1){
+                                $this->id_perusahaan=Yii::$app->user->identity->id_perusahaan;
+                            }
                         }
                     }
                     else

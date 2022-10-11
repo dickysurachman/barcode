@@ -18,6 +18,7 @@ use yii\web\NotFoundHttpException;
 use \yii\web\Response;
 use yii\helpers\Html;
 use frontend\models\Books;
+use frontend\models\Register;
 use frontend\models\Csv;
 use app\models\User;
 use app\models\Scan;
@@ -44,7 +45,7 @@ class SiteController extends Controller
         return [
             'access' => [
                 'class' => AccessControl::className(),
-                'only' => ['actionReportsumcsv','report','reportsum','scanmama','scanm','scan','scanx','scaninputan','logout','userx','updatescan', 'signup','index','profile','mauupdate','update','signup','contact','lists','list3','password','userprofile','reportinput','reportretur','reportsumretur','reportsuminput'],
+                'only' => ['actionReportsumcsv','report','reportsum','scanmama','scanm','scan','scanx','scaninputan','logout','userx','updatescan', 'index','profile','mauupdate','update','signup','contact','lists','list3','password','userprofile','reportinput','reportretur','reportsumretur','reportsuminput'],
                 'rules' => [
                     
                     [
@@ -656,6 +657,20 @@ class SiteController extends Controller
             'model' => $model,
         ]);
     }
+    public function actionRegister()
+    {
+        $model = new Register();
+        if ($model->load(Yii::$app->request->post())) {
+            if($model->signup()){
+                Yii::$app->session->setFlash('success', 'User registered process has been success, Admin will send email notification if account already active');
+            }
+
+        }
+
+        return $this->render('register', [
+            'model' => $model,
+        ]);
+    }
 
     /**
      * Requests password reset.
@@ -664,7 +679,26 @@ class SiteController extends Controller
      */
     public function actionRequestPasswordReset()
     {
-        $this->layout="main-login";
+        //$this->layout="main-login";
+        $model = new PasswordResetRequestForm();
+        if ($model->load(Yii::$app->request->post()) && $model->validate()) {
+            if ($model->sendEmail()) {
+                Yii::$app->session->setFlash('success', 'Check your email for further instructions.');
+
+                return $this->goHome();
+            } else {
+                Yii::$app->session->setFlash('error', 'Sorry, we are unable to reset password for the provided email address.');
+            }
+        }
+
+        return $this->render('requestPasswordResetToken', [
+            'model' => $model,
+        ]);
+    }
+
+    public function actionReset()
+    {
+        //$this->layout="main-login";
         $model = new PasswordResetRequestForm();
         if ($model->load(Yii::$app->request->post()) && $model->validate()) {
             if ($model->sendEmail()) {

@@ -57,8 +57,11 @@ $fieldOptions2 = [
             
         </div>
         <!-- /.social-auth-links -->
-         <?= Html::a('I forgot my password', ['site/request-password-reset']) ?>.
+         <?= Html::a('I forgot my password', ['site/reset']) ?>.
          <?= Html::a('Login using QRCode', ['site/loginbarcode'],['class'=>'btn btn-success btn-block btn-flat']) ?>.
+        <br/>
+         <?= Html::a('Register', ['site/register'],['class'=>'btn btn-info btn-block btn-flat']) ?>.
+
         <br>
         
 

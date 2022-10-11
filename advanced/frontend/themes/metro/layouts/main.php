@@ -5,7 +5,7 @@ use yii\helpers\Html;
 /* @var $content string */
 
 $this->title="Sistem Barcode";
-if (Yii::$app->controller->action->id === 'login') { 
+if (Yii::$app->controller->action->id == 'login' or Yii::$app->controller->action->id == 'loginbarcode' or Yii::$app->controller->action->id == 'reset' or Yii::$app->controller->action->id == 'signup') { 
 /**
  * Do not use this code in your template. Remove it. 
  * Instead, use the code  $this->layout = '//main-login'; in your controller.

@@ -23,3 +23,13 @@ ALTER TABLE `barcode_retur` ADD INDEX(`barcode`);
 
 ====
 ALTER TABLE `scan` ADD INDEX( `id_grup`, `kode`, `tanggal`, `id_perusahaan`);
+
+create table `barcode`(`id` int(11),`barcode` varchar(50),`tanggal` date,
+`add_who` int(11) NULL,`edit_who` int(11) NULL,`add_date` datetime NULL, `edit_date` datetime NULL
+);
+ALTER TABLE `barcode`
+  ADD PRIMARY KEY (`id`);
+ALTER TABLE `barcode`
+  ADD KEY (`barcode`);
+ALTER TABLE `barcode`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;

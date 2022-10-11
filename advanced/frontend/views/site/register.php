@@ -5,14 +5,14 @@
 /* @var $model \frontend\models\SignupForm */
 use yii\helpers\Html;
 use yii\bootstrap\ActiveForm;
-
-$this->title = 'Signup';
+use yii\captcha\Captcha;
+$this->title = 'Register Member';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="site-signup">
     <h1><?= Html::encode($this->title) ?></h1>
 
-    <p>Please fill out the following fields to signup:</p>
+    <p>Please fill out the following fields to register:</p>
 
     <div class="row">
         <div class="col-lg-5">
@@ -24,6 +24,14 @@ $this->params['breadcrumbs'][] = $this->title;
 
                 <?= $form->field($model, 'password')->passwordInput() ?>
 
+                <?= $form->field($model, 'nama')->textInput(['maxlength' => true]) ?>
+                <?= $form->field($model, 'alamat')->textInput(['maxlength' => true]) ?>
+                <?= $form->field($model, 'kota')->textInput(['maxlength' => true]) ?>
+                <?= $form->field($model, 'telp')->textInput(['maxlength' => true]) ?>
+                <?= $form->field($model, 'fax')->textInput(['maxlength' => true]) ?>
+                <?= $form->field($model, 'verifyCode')->widget(Captcha::className(), [
+                    'template' => '<div class="row"><div class="col-lg-3">{image}</div><div class="col-lg-6">{input}</div></div>',
+                ]) ?>
                 <div class="form-group">
                     <?= Html::submitButton('Signup', ['class' => 'btn btn-primary', 'name' => 'signup-button']) ?>
                 </div>
