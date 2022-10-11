@@ -662,7 +662,7 @@ class SiteController extends Controller
         $model = new Register();
         if ($model->load(Yii::$app->request->post())) {
             if($model->signup()){
-                Yii::$app->session->setFlash('success', 'User registered process has been success, Admin will send email notification if account already active');
+                Yii::$app->session->setFlash('success', 'User registration process has been success, Admin will send email notification if account already active');
             }
 
         }
