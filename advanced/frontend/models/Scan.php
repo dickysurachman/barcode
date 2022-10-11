@@ -52,7 +52,7 @@ class Scan extends \yii\db\ActiveRecord
         return [
             'id' => 'ID',
             'barcode' => 'Barcode',
-            'id_grup' => 'Group',
+            'id_grup' => 'Expedition',
             'kode' => 'Kode',
             'tanggal' => 'Tanggal',
             'id_perusahaan' => 'Perusahaan',

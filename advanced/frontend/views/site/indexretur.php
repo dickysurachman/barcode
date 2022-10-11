@@ -34,7 +34,7 @@ $kolom=[
     [
         'class'=>'\kartik\grid\DataColumn',
         'attribute'=>'barcode',
-        'header'=>'Group',
+        'header'=>'Expedition',
         'filter'=>false,
         'value'=>function ($model, $key, $index, $widget) { 
                 return isset($model->scann)?$model->scann->grup->nama:'';

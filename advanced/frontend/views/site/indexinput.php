@@ -50,7 +50,7 @@ $kolom=[
         'header'=>'Scan Kirim',
         'filter'=>false,
         'value'=>function ($model, $key, $index, $widget) { 
-                return isset($model->scann)?$model->scann->add_date:'';
+                return isset($model->scann)?$model->scann->add_date:'NOT PACKED';
         },
     ],
     [

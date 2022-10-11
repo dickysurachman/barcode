@@ -19,3 +19,7 @@ ALTER TABLE `barcode_retur`
 ALTER TABLE `scan` ADD INDEX(`barcode`);
 ALTER TABLE `barcode_input` ADD INDEX(`barcode`);
 ALTER TABLE `barcode_retur` ADD INDEX(`barcode`);
+
+
+====
+ALTER TABLE `scan` ADD INDEX( `id_grup`, `kode`, `tanggal`, `id_perusahaan`);
