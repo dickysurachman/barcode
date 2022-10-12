@@ -20,7 +20,7 @@ class BarcodeSearch extends Barcode
     public function rules()
     {
         return [
-            [['id', 'add_who', 'edit_who'], 'integer'],
+            [['id', 'add_who', 'edit_who','id_perusahaan'], 'integer'],
             [['barcode', 'tanggal', 'add_date', 'edit_date','tgl_a','tgl_b'], 'safe'],
         ];
     }
@@ -63,6 +63,7 @@ class BarcodeSearch extends Barcode
             'add_who' => $this->add_who,
             'edit_who' => $this->edit_who,
             'add_date' => $this->add_date,
+            'id_perusahaan' => Yii::$app->user->identity->id_perusahaan,
             'edit_date' => $this->edit_date,
         ]);
 

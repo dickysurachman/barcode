@@ -32,7 +32,7 @@ class Barcode extends \yii\db\ActiveRecord
     {
         return [
             [['tanggal', 'add_date', 'edit_date'], 'safe'],
-            [['add_who', 'edit_who'], 'integer'],
+            [['add_who', 'edit_who','id_perusahaan'], 'integer'],
             [['barcode'], 'string', 'max' => 50],
             [['barcode'], 'unique'],
             [['barcode'], 'required'],
@@ -52,6 +52,7 @@ class Barcode extends \yii\db\ActiveRecord
             'edit_who' => Yii::t('yii', 'Edit Who'),
             'add_date' => Yii::t('yii', 'Add Date'),
             'edit_date' => Yii::t('yii', 'Edit Date'),
+            'id_perusahaan' => Yii::t('yii', 'Company'),
         ];
     }
 
