@@ -86,7 +86,7 @@ class SiteController extends Controller
     }
 
     public function actionExx() {
-        $inputtt=Barcodeinput::find()->where(['id_perusahaan'=>Yii::$app->user->identity->id])->all();
+        $inputtt=Barcodeinput::find()->where(['id_perusahaan'=>Yii::$app->user->identity->id_perusahaan])->all();
         $i=0;
         foreach ($inputtt as $vall) {
             $cek=Barcode::findOne(['barcode'=>$vall->barcode,'id_perusahaan'=>Yii::$app->user->identity->id_perusahaan]);
@@ -99,7 +99,7 @@ class SiteController extends Controller
         }
         echo $i .' berhasil diimport <br>';
         $i=0;
-        $inputtt2=Scan::find()->where(['id_perusahaan'=>Yii::$app->user->identity->id])->all();
+        $inputtt2=Scan::find()->where(['id_perusahaan'=>Yii::$app->user->identity->id_perusahaan])->all();
         foreach ($inputtt2 as $vall2) {
             $cek=Barcode::findOne(['barcode'=>$vall2->barcode,'id_perusahaan'=>Yii::$app->user->identity->id_perusahaan]);
                 if(!$cek){
