@@ -33,3 +33,6 @@ ALTER TABLE `barcode`
   ADD KEY (`barcode`);
 ALTER TABLE `barcode`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+=======
+
+alter table `barcode` add id_perusahaan int(11) NULL;
