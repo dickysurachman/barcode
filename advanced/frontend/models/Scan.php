@@ -82,7 +82,7 @@ class Scan extends \yii\db\ActiveRecord
     }
     public function getInput()
     {
-        return $this->hasOne(Barcoderetur::className(), ['barcode' => 'barcode']);
+        return $this->hasOne(Barcodeinput::className(), ['barcode' => 'barcode']);
     }
 
 
@@ -114,6 +114,14 @@ class Scan extends \yii\db\ActiveRecord
                 $this->add_who = Yii::$app->user->identity->id;
                 $this->add_date = date('Y-m-d H:i:s',time());
                 $this->tanggal = date('Y-m-d',time());
+                $cek=Barcode::findOne(['barcode'=>$this->barcode,'id_perusahaan'=>Yii::$app->user->identity->id_perusahaan]);
+                if(!$cek){
+                    $simpan=new Barcode();
+                    $simpan->barcode = $this->barcode;
+                    $simpan->save();
+                }
+
+
             return true;
         } else {
             $this->edit_who =Yii::$app->user->identity->id;

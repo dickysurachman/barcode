@@ -32,6 +32,8 @@ use app\models\Barcodeinput;
 use app\models\BarcodeinputSearch;
 use app\models\Barcoderetur;
 use app\models\BarcodereturSearch;
+use app\models\Barcode;
+use app\models\BarcodeSearch;
 /**
  * Site controller
  */
@@ -45,11 +47,11 @@ class SiteController extends Controller
         return [
             'access' => [
                 'class' => AccessControl::className(),
-                'only' => ['actionReportsumcsv','report','reportsum','scanmama','scanm','scan','scanx','scaninputan','logout','userx','updatescan', 'index','profile','mauupdate','update','signup','contact','lists','list3','password','userprofile','reportinput','reportretur','reportsumretur','reportsuminput'],
+                'only' => ['actionReportsumcsv','report','reportsum','scanmama','scanm','scan','scanx','scaninputan','logout','userx','updatescan', 'index','profile','mauupdate','update','signup','contact','lists','list3','password','userprofile','reportinput','reportretur','reportsumretur','reportsuminput','exx'],
                 'rules' => [
                     
                     [
-                        'actions' => ['actionReportsumcsv','report','reportsum','scanmama','scanm','scanx','scan','scaninputan','logout','userx','updatescan','index','profile','mauupdate','update','signup','contact','lists','password','userprofile','reportinput','reportretur','reportsumretur','reportsuminput'],
+                        'actions' => ['actionReportsumcsv','report','reportsum','scanmama','scanm','scanx','scan','scaninputan','logout','userx','updatescan','index','profile','mauupdate','update','signup','contact','lists','password','userprofile','reportinput','reportretur','reportsumretur','reportsuminput','exx'],
                         'allow' => true,
                         'roles' => ['@'],
                     ],
@@ -82,6 +84,36 @@ class SiteController extends Controller
             ],
         ];
     }
+
+    public function actionExx() {
+        $inputtt=Barcodeinput::find()->where(['id_perusahaan'=>Yii::$app->user->identity->id])->all();
+        $i=0;
+        foreach ($inputtt as $vall) {
+            $cek=Barcode::findOne(['barcode'=>$vall->barcode,'id_perusahaan'=>Yii::$app->user->identity->id_perusahaan]);
+                if(!$cek){
+                    $simpan=new Barcode();
+                    $simpan->barcode = $vall->barcode;
+                    $simpan->save();
+                    $i++;
+                }
+        }
+        echo $i .' berhasil diimport <br>';
+        $i=0;
+        $inputtt2=Scan::find()->where(['id_perusahaan'=>Yii::$app->user->identity->id])->all();
+        foreach ($inputtt2 as $vall2) {
+            $cek=Barcode::findOne(['barcode'=>$vall2->barcode,'id_perusahaan'=>Yii::$app->user->identity->id_perusahaan]);
+                if(!$cek){
+                    $simpan=new Barcode();
+                    $simpan->barcode = $vall2->barcode;
+                    $simpan->save();
+                    $i++;
+                }
+        }
+        echo $i .' berhasil diimport <br>';
+    }
+
+        
+
     public function actionReport() {
     $searchModel = new ScanSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
@@ -92,10 +124,10 @@ class SiteController extends Controller
         ]);
     }    
     public function actionReportk() {
-    $searchModel = new ScanSearch();
-        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+    $searchModel = new BarcodeSearch();
+    $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
-        return $this->render('reportscank', [
+        return $this->render('reportscank2', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
         ]);
