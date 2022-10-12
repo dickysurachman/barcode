@@ -39,6 +39,7 @@ class Barcoderetur extends \yii\db\ActiveRecord
             [['alasan'], 'string', 'max' => 200],
             [['barcode'], 'string', 'max' => 50],
             ['barcode', 'notExistsValidator'],
+            ['barcode', 'unique'],
         ];
     }
     public function notExistsValidator()
