@@ -61,7 +61,7 @@ CrudAsset::register($this);
                                     'data-confirm-title'=>'Are you sure?',
                                     'data-confirm-message'=>'Are you sure want to delete this item'
                                 ]),
-                        ]).                        
+                        ]).                     
                         '<div class="clearfix"></div>',
             ]
         ])?>

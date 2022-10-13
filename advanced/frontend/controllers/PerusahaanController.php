@@ -26,10 +26,10 @@ class PerusahaanController extends Controller
             return [
                 'access' => [
                     'class' => AccessControl::className(),
-                    'only' => ['create', 'view','index','delete','update','updateperusahaan','bulkdelete'],
+                    'only' => ['create', 'view','index','delete','update','updateperusahaan','bulk-delete'],
                     'rules' => [
                         [
-                            'actions' => ['create', 'view','index','delete','update','updateperusahaan','bulkdelete'],
+                            'actions' => ['create', 'view','index','delete','update','updateperusahaan','bulk-delete'],
                             'allow' => true,
                             'roles' => ['@'],
                             'matchCallback'=>function(){
@@ -281,7 +281,7 @@ class PerusahaanController extends Controller
      * @param integer $id
      * @return mixed
      */
-    public function actionBulkDelete()
+     public function actionBulkDelete()
     {        
         $request = Yii::$app->request;
         $pks = explode(',', $request->post( 'pks' )); // Array or selected records primary keys
@@ -290,6 +290,28 @@ class PerusahaanController extends Controller
             $model->delete();
         }
 
+        if($request->isAjax){
+            /*
+            *   Process for ajax request
+            */
+            Yii::$app->response->format = Response::FORMAT_JSON;
+            return ['forceClose'=>true,'forceReload'=>'#crud-datatable-pjax'];
+        }else{
+            /*
+            *   Process for non-ajax request
+            */
+            return $this->redirect(['index']);
+        }
+       
+    }
+    public function actionBulkDeleteaaa()
+    {        
+        $request = Yii::$app->request;
+        $pks = explode(',', $request->post( 'pks' )); // Array or selected records primary keys
+        foreach ( $pks as $pk ) {
+            $model = $this->findModel($pk);
+            $model->delete();
+        }
         if($request->isAjax){
             /*
             *   Process for ajax request
