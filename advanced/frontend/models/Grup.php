@@ -47,16 +47,19 @@ class Grup extends \yii\db\ActiveRecord
             'id_perusahaan' => 'Perusahaan',
         ];
     }
-      public function beforeSave($insert)
+   
+   /*   
+    public function beforeSave($insert)
     {
         if (parent::beforeSave($insert)) {
             // Place your custom code here
             //$hh=Yii::$app->db->createCommand('SET FOREIGN_KEY_CHECKS=0');
             if($this->isNewRecord)
-                $this->id_perusahaan=Yii::$app->user->identity->id_perusahaan;
+                //$this->id_perusahaan=Yii::$app->user->identity->id_perusahaan;
             return true;
         } else {
             return false;
         }
     }
+    */
 }

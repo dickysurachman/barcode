@@ -16,7 +16,8 @@ $this->title = 'Sistem Barcode';
  
 
     <?php
-    $has=Grup::find()->where(['id_perusahaan'=>Yii::$app->user->identity->id_perusahaan])->all();
+    //$has=Grup::find()->where(['id_perusahaan'=>Yii::$app->user->identity->id_perusahaan])->all();
+    $has=Grup::find()->all();
     $i=0;
     foreach ($has as $key => $value) {
     ?>
@@ -135,7 +136,6 @@ $this->title = 'Sistem Barcode';
                                 ,
                 'options' => array('title' => '','height'=>350,'legend'=>['position'=>'none']))); 
     
-    //$dua=Yii::$app->db->createCommand
     ?>
     </div>
     </div>

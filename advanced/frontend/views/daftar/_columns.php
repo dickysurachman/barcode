@@ -83,6 +83,29 @@ return [
          },
 
      ],*/
+      [
+        'class' => 'kartik\grid\ActionColumn',
+        'dropdown' => false,
+        'header'=>'User Scan',
+        'vAlign'=>'middle',
+        'template'=>'{password}',
+        'urlCreator' => function($action, $model, $key, $index) { 
+                return Url::to([$action,'id'=>$key]);
+        },
+        'buttons' => [
+            'password' => function ($url, $model, $key) {
+                return Html::a('&nbsp;&nbsp;<span class="glyphicon glyphicon-file"></span>', ['updatescan', 'id'=>$model->id],['data-pjax' => "1",'role'=>'modal-remote','title'=>'Update Scan','data-toggle'=>'tooltip']);
+            },
+        ],
+        'viewOptions'=>['role'=>'modal-remote','title'=>'View','data-toggle'=>'tooltip'],
+        'updateOptions'=>['role'=>'modal-remote','title'=>'Update', 'data-toggle'=>'tooltip'],
+        'deleteOptions'=>['role'=>'modal-remote','title'=>'Delete', 
+                          'data-confirm'=>false, 'data-method'=>false,// for overide yii data api
+                          'data-request-method'=>'post',
+                          'data-toggle'=>'tooltip',
+                          'data-confirm-title'=>'Are you sure?',
+                          'data-confirm-message'=>'Are you sure want to delete this item'], 
+    ],
     [
         'class' => 'kartik\grid\ActionColumn',
         'dropdown' => false,

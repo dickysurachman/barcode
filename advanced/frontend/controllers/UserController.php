@@ -5,6 +5,7 @@ namespace frontend\controllers;
 use Yii;
 use app\models\User;
 use app\models\Grup;
+use app\models\Perusahaan;
 use app\models\Usersearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
@@ -200,10 +201,9 @@ public function actionUpdatescan($id)
                                 Html::button('Save',['class'=>'btn btn-primary','type'=>"submit"])
                 ];         
             }else if($model->load($request->post())){
-//				$hapus =Yii::$app->db->createCommand("DELETE FROM user_grup WHERE user_id='".Yii::$app->user->identity->id."'")
-//				->execute();
 				$i=0;
-				$has=Grup::find()->where(['id_perusahaan'=>Yii::$app->user->identity->id_perusahaan])->all();
+				//$has=Grup::find()->where(['id_perusahaan'=>Yii::$app->user->identity->id_perusahaan])->all();
+                $has=Grup::find()->all();
 				foreach ($has as $key => $value){
 					//echo $value->id."=";
 					//echo $model["id_grup"][$value->id].",";
@@ -348,32 +348,55 @@ public function actionUpdatescan($id)
                 ];         
             }else if($model->load($request->post())) {
 
-                //$user = new User();
-                //$user->username = $this->username;
-                //$user->email = $this->email;
-                $model->status=10;
-                $model->created_at=time();
-                $model->updated_at=time();
-                $model->foto = UploadedFile::getInstance($model, 'foto');
-                if(isset($model->foto)){
-                $namafile=rand(1000, 99999999);
-                $file1= $namafile . '.' . $model->foto->extension;
-                $model->foto->saveAs('images/' . $namafile . '.' . $model->foto->extension,TRUE);
-                $model->foto=$file1;
-                } 
-                $model->setPassword($model->password_hash);
-                $model->generateAuthKey();
-                $model->save();
+                $limit=Perusahaan::findOne(Yii::$app->user->identity->id_perusahaan);
+                if(isset($limit)) {
+                    $cccount=$limit->limitan;
+                    $usertotal=User::find()->where(['id_perusahaan'=>Yii::$app->user->identity->id_perusahaan])->count();
+                    if($cccount>=$usertotal) {                
+                        $model->status=10;
+                        $model->created_at=time();
+                        $model->updated_at=time();
+                        $model->foto = UploadedFile::getInstance($model, 'foto');
+                        if(isset($model->foto)){
+                        $namafile=rand(1000, 99999999);
+                        $file1= $namafile . '.' . $model->foto->extension;
+                        $model->foto->saveAs('images/' . $namafile . '.' . $model->foto->extension,TRUE);
+                        $model->foto=$file1;
+                        } 
+                        $model->setPassword($model->password_hash);
+                        $model->generateAuthKey();
+                        $model->save();
+                    return [
+                        'forceReload'=>'#crud-datatable-pjax',
+                        'title'=> "Create new user",
+                        'content'=>'<span class="text-success">Create user success</span>',
+                        'footer'=> Html::button('Close',['class'=>'btn btn-default pull-left','data-dismiss'=>"modal"]).
+                                Html::a('Create More',['create'],['class'=>'btn btn-primary','role'=>'modal-remote'])
+                        ];         
+                    } else {
 
-            // && $model->save()){
-                return [
+                        return [
+                        'forceReload'=>'#crud-datatable-pjax',
+                        'title'=> "Data Failed",
+                        'content'=>'<span class="text-success">Create User Failed because limit user</span>',
+                        'footer'=> Html::button('Close',['class'=>'btn btn-default pull-left','data-dismiss'=>"modal"]).
+                                Html::a('Create More',['create'],['class'=>'btn btn-primary','role'=>'modal-remote'])
+            
+                        ];         
+                    }
+        
+
+                } else {
+                    return [
                     'forceReload'=>'#crud-datatable-pjax',
-                    'title'=> "Create new user",
-                    'content'=>'<span class="text-success">Create user success</span>',
+                    'title'=> "Data Failed",
+                    'content'=>'<span class="text-success">Create User Failed because limit user</span>',
                     'footer'=> Html::button('Close',['class'=>'btn btn-default pull-left','data-dismiss'=>"modal"]).
                             Html::a('Create More',['create'],['class'=>'btn btn-primary','role'=>'modal-remote'])
         
-                ];         
+                    ];         
+                }
+
             }else{           
                 return [
                     'title'=> "Create new user",

@@ -72,9 +72,9 @@ return [
             'transport' => [
             'class' => 'Swift_SmtpTransport',
             //'host' => 'smtp.gmail.com',
-            'host' => 'mail.intiwhiz.com',
-            'username' => 'no-reply@intiwhiz.com',
-            'password' => 'Wh1zh0t3ls',
+            'host' => 'mail.amoypreneur.com',
+            'username' => 'barcode@amoypreneur.com',
+            'password' => 'qcV&VcSMvj?*',
             'port' => '587',
             'encryption' => 'tls',
             ],
@@ -132,8 +132,8 @@ return [
                 ],
     'params' => $params,
     'params' => [
-        'adminEmail' => 'rachman@intiwhiz.com',
-        'supportEmail' => 'rachman@intiwhiz.com',
+        'adminEmail' => 'sukasno.jami86@gmail.com',
+        'supportEmail' => 'sukasno.jami86@gmail.com',
         'user.passwordResetTokenExpire' => 3600,
                 'maskMoneyOptions' => [
                     'prefix' => 'Rp. ',

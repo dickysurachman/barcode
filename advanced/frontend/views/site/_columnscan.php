@@ -2,7 +2,8 @@
 use yii\helpers\Url;
 use app\models\Grup;
 use yii\helpers\ArrayHelper;
-$provinsi=Grup::find()->where(['id_perusahaan'=>Yii::$app->user->identity->id_perusahaan])->orderBy(['nama' => SORT_ASC])->all();
+//$provinsi=Grup::find()->where(['id_perusahaan'=>Yii::$app->user->identity->id_perusahaan])->orderBy(['nama' => SORT_ASC])->all();
+$provinsi=Grup::find()->all();
 $kprovinsi=ArrayHelper::map($provinsi,'id','nama');
 return [
   

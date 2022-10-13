@@ -33,7 +33,8 @@ class GrupController extends Controller
                             'roles' => ['@'],
                             'matchCallback'=>function(){
                                 return (
-                                    (Yii::$app->user->identity->tipe_user==0)// and 
+                                    (Yii::$app->user->identity->tipe_user2==1)
+                                    // and 
                                     //(Yii::$app->user->identity->faa==true or Yii::$app->user->identity->tipe_user2==0)
                                 );}
                         ],
@@ -71,7 +72,6 @@ class GrupController extends Controller
     {    
         $searchModel = new GrupSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
-
         return $this->render('index', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,

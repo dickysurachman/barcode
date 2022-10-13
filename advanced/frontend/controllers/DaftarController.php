@@ -11,6 +11,7 @@ use yii\filters\VerbFilter;
 use \yii\web\Response;
 use yii\helpers\Html;
 use yii\filters\AccessControl;
+use app\models\Usergrup;
 /**
  * DaftarController implements the CRUD actions for User model.
  */
@@ -24,10 +25,10 @@ class DaftarController extends Controller
             return [
                 'access' => [
                     'class' => AccessControl::className(),
-                    'only' => ['create', 'view','index','delete','update','bulk-delete'],
+                    'only' => ['create', 'view','index','delete','update','updatescan','bulk-delete'],
                     'rules' => [
                         [
-                            'actions' => ['create','index','delete','update','bulk-delete','view'],
+                            'actions' => ['create','index','delete','update','bulk-delete','updatescan','view'],
                             'allow' => true,
                             'roles' => ['@'],
                             'matchCallback'=>function(){
@@ -72,6 +73,63 @@ class DaftarController extends Controller
      * Lists all User models.
      * @return mixed
      */
+
+public function actionUpdatescan($id)
+    {
+        $request = Yii::$app->request;
+        //$model = $this->findModel($id);       
+        $model = new Usergrup;
+        if($request->isAjax){
+            /*
+            *   Process for ajax request
+            */
+            Yii::$app->response->format = Response::FORMAT_JSON;
+            if($request->isGet){
+                return [
+                    'title'=> "Update Grup Scan #".$id,
+                    'content'=>$this->renderAjax('updatescan', [
+                        'model' => $model,'id'=>$id
+                    ]),
+                    'footer'=> Html::button('Close',['class'=>'btn btn-default pull-left','data-dismiss'=>"modal"]).
+                                Html::button('Save',['class'=>'btn btn-primary','type'=>"submit"])
+                ];         
+            }else if($model->load($request->post())){
+                $i=0;
+                //$has=Grup::find()->where(['id_perusahaan'=>Yii::$app->user->identity->id_perusahaan])->all();
+                $has=Grup::find()->all();
+                foreach ($has as $key => $value){
+                    //echo $value->id."=";
+                    //echo $model["id_grup"][$value->id].",";
+                    if($model["id_grup"][$value->id]==1){
+                        $cek=Usergrup::findOne(['id_grup'=>$value->id,'id_user'=>$id]);
+                        if(!$cek){
+                            $baru=new Usergrup();
+                            $baru->id_grup=$value->id;
+                            $baru->id_user=$id;
+                            $baru->save();
+                        }
+                    } else {
+                        $cek=Usergrup::findOne(['id_grup'=>$value->id,'id_user'=>$id]);
+                        if($cek){
+                            $cek->delete();
+                        }           
+                    }
+                }
+                return ['forceClose'=>true,'forceReload'=>'#crud-datatable-pjax'];
+                    
+            }else{
+                 return [
+                    'title'=> "Update Grup Scan #".$id,
+                    'content'=>$this->renderAjax('updatescan', [
+                        'model' => $model,'id'=>$id
+                    ]),
+                    'footer'=> Html::button('Close',['class'=>'btn btn-default pull-left','data-dismiss'=>"modal"]).
+                                Html::button('Save',['class'=>'btn btn-primary','type'=>"submit"])
+                ];        
+            }
+        }else{
+        }
+    }
    public function actionIndex()
     {    
         $searchModel = new Usersearcha();
@@ -269,6 +327,23 @@ class DaftarController extends Controller
             }else if($model->load($request->post()) ){
                 //$model->setPassword($model->password_hash);
                 //$model->generateAuthKey();
+                if($model->status==10){
+                    $model = $this->findModel($id); 
+                    $email1=$model->email;
+                    $mail='
+                    <p>Hello '.$model->username.',</p>
+                    <p>Congratulation, your account have been active on <a href="https://www.amoypreneur.com/barcodesys">Barcode System</a></p>
+                    <p>You can login by this email, see u on our website</p>
+                    <p>Cheers :)</p>';
+                    return Yii::$app
+                            ->mailer
+                            ->compose()
+                            ->setFrom([Yii::$app->params['supportEmail'] => Yii::$app->name])
+                            ->setTo($email1)
+                            ->setSubject('Account registration Success at ' . Yii::$app->name)
+                            ->setHtmlBody($mail)
+                            ->send();
+                    }
                 $model->save();
                 return [
                     'forceReload'=>'#crud-datatable-pjax',

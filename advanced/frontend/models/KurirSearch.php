@@ -58,7 +58,7 @@ class KurirSearch extends Kurir
         $query->andFilterWhere([
             'id' => $this->id,
             'cari2' => $this->cari2,
-            'id_perusahaan' => Yii::$app->user->identity->id_perusahaan,
+            //'id_perusahaan' => Yii::$app->user->identity->id_perusahaan,
             'id_grup' => $this->id_grup,
             'status' => $this->status,
             'add_who' => $this->add_who,

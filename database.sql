@@ -36,3 +36,10 @@ ALTER TABLE `barcode`
 =======
 
 alter table `barcode` add id_perusahaan int(11) NULL;
+delete from kurir WHERE id_perusahaan=4;
+delete from grup WHERE id_perusahaan=4;
+alter table `perusahaan` add limitan int(3) DEFAULT 1;
+TRUNCATE scan;
+TRUNCATE inputan;
+TRUNCATE barcode_input;
+TRUNCATE barcode_retur;

@@ -22,9 +22,11 @@
             [
                 'options' => ['class' => 'sidebar-menu tree', 'data-widget'=> 'tree'],
                 'items' => [
-                    ['label' => 'Rubah Password', 'icon' => 'user', 'url' => ['/site/password']],
+                    ['label' => 'Rubah Password', 'icon' => 'key', 'url' => ['/site/password']],
                     ['label' => 'User', 'icon' => 'user', 'url' => ['/daftar']],
-                    ['label' => 'Perusahaan', 'icon' => 'user', 'url' => ['/perusahaan']],
+                    ['label' => 'Perusahaan', 'icon' => 'photo', 'url' => ['/perusahaan']],
+                    ['label' => 'Grup Kurir', 'icon' => 'motorcycle', 'url' => ['/grup']],
+                    ['label' => 'Kurir Identitas', 'icon' => 'rss', 'url' => ['/kurir']],
                 ],
             ]
         ) ?>
@@ -44,8 +46,7 @@
                         'items' => [     
                             ['label' => 'User', 'icon' => 'user', 'url' => ['/user']],
                             ['label' => 'Perusahaan', 'icon' => 'photo', 'url' => ['/profile/updateperusahaan']],
-                            ['label' => 'Grup Kurir', 'icon' => 'motorcycle', 'url' => ['/grup']],
-                            ['label' => 'Kurir Identitas', 'icon' => 'rss', 'url' => ['/kurir']],
+                           
                         ],
                     ],
                     ['label' => 'Input Data', 'icon' => 'search', 'url' => '#',

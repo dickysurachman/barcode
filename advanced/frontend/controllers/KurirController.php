@@ -32,7 +32,7 @@ class KurirController extends Controller
                             'roles' => ['@'],
                             'matchCallback'=>function(){
                                 return (
-                                    (Yii::$app->user->identity->tipe_user==0)// and 
+                                    (Yii::$app->user->identity->tipe_user2==1)// and 
                                     //(Yii::$app->user->identity->faa==true or Yii::$app->user->identity->tipe_user2==0)
                                 );}
                         ],

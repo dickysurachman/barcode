@@ -90,7 +90,7 @@ class Kurir extends \yii\db\ActiveRecord
             // Place your custom code here
             $hh=Yii::$app->db->createCommand('SET FOREIGN_KEY_CHECKS=0');
             if($this->isNewRecord)
-                $this->id_perusahaan=Yii::$app->user->identity->id_perusahaan;
+                //$this->id_perusahaan=Yii::$app->user->identity->id_perusahaan;
                 $this->add_who = Yii::$app->user->identity->id;
                 $this->add_date = date('Y-m-d H:i:s',time());
             return true;

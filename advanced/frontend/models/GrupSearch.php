@@ -1,7 +1,6 @@
 <?php
 
 namespace app\models;
-
 use Yii;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
@@ -42,27 +41,21 @@ class GrupSearch extends Grup
     public function search($params)
     {
         $query = Grup::find();
-
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
         ]);
-
         $this->load($params);
-
         if (!$this->validate()) {
             // uncomment the following line if you do not want to return any records when validation fails
             // $query->where('0=1');
             return $dataProvider;
         }
-
         $query->andFilterWhere([
             'id' => $this->id,
             'status' => $this->status,
-            'id_perusahaan' => Yii::$app->user->identity->id_perusahaan,
+            //'id_perusahaan' => Yii::$app->user->identity->id_perusahaan,
         ]);
-
         $query->andFilterWhere(['like', 'nama', $this->nama]);
-
         return $dataProvider;
     }
 }

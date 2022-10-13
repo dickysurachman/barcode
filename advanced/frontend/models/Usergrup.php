@@ -54,7 +54,9 @@ class Usergrup extends \yii\db\ActiveRecord
     {
         if (parent::beforeSave($insert)) {
             if($this->isNewRecord)
-                $this->id_perusahaan=Yii::$app->user->identity->id_perusahaan;
+                if(!isset($this->id_perusahaan)) {
+                    $this->id_perusahaan=Yii::$app->user->identity->id_perusahaan;
+                }
                 //$this->id_user=Yii::$app->user->identity->id;
             return true;
         } else {

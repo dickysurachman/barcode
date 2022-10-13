@@ -6,6 +6,8 @@ use Yii;
 use yii\base\Model;
 use app\models\Perusahaan;
 use app\models\User;
+use app\models\Grup;
+use app\models\Usergrup;
 /**
  * Books is the model behind the contact form.
  */
@@ -115,8 +117,17 @@ class Register extends Model
         $user->id_perusahaan =$company->id;
         $user->status =9;
         $user->setPassword($this->password);
-        $user->generateAuthKey();   
-        return $user->save() ? $user : null;
+        $user->generateAuthKey();
+        $user->save();
+        $has=Grup::find()->all();
+        foreach ($has as $key => $value){
+            $baru=new Usergrup();
+            $baru->id_grup=$value->id;
+            $baru->id_user=$user->id;
+            $baru->id_perusahaan=$company->id;
+            $baru->save();
+        }   
+        return isset($user) ? $user : null;
     }
     /**
      * Sends an email to the specified email address using the information collected by this model.

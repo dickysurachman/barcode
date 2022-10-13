@@ -26,8 +26,12 @@ $tipe=['Aktif','Tidak Aktif'];
     <?= $form->field($model, 'fax')->textInput(['maxlength' => true]) ?>
     </div><div class="col-md-2">
     <?= $form->field($model, 'email')->textInput(['maxlength' => true]) ?>
-    </div><div class="col-md-6">
+    </div>
+    <div class="col-md-3">
     <?= $form->field($model, 'status')->dropDownList($tipe) ?>
+    </div>
+    <div class="col-md-3">
+    <?= $form->field($model, 'limitan')->textInput(['maxlength' => true]) ?>
     </div>
 
     <?php
