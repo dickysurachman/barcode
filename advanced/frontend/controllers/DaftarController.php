@@ -328,15 +328,17 @@ public function actionUpdatescan($id)
             }else if($model->load($request->post()) ){
                 //$model->setPassword($model->password_hash);
                 //$model->generateAuthKey();
-                if($model->status==10){
-                    $model = $this->findModel($id); 
-                    $email1=$model->email;
+                $state=$model->status;
+                if($state==10){
+                
+                    $modelx = $this->findModel($id); 
+                    $email1=$modelx->email;
                     $mail='
-                    <p>Hello '.$model->username.',</p>
+                    <p>Hello '.$modelx->username.',</p>
                     <p>Congratulation, your account have been active on <a href="https://www.amoypreneur.com/barcodesys">Barcode System</a></p>
                     <p>You can login by this email, see u on our website</p>
                     <p>Cheers :)</p>';
-                    $kirim_email= Yii::$app
+                    Yii::$app
                             ->mailer
                             ->compose()
                             ->setFrom([Yii::$app->params['supportEmail'] => Yii::$app->name])
@@ -344,7 +346,7 @@ public function actionUpdatescan($id)
                             ->setSubject('Account registration Success at ' . Yii::$app->name)
                             ->setHtmlBody($mail)
                             ->send();
-                    }
+                } 
                 $model->save();
                 
                 return [

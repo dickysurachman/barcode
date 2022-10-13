@@ -72,9 +72,9 @@ return [
             'transport' => [
                     'class' => 'Swift_SmtpTransport',
                     //'host' => 'smtp.gmail.com',
-                    'host' => '213213123213',
-                    'username' => '23123123123123',
-                    'password' => 'qcV&22323213?*',
+                    'host' => 'qcV&VcSMvj?*',
+                    'username' => 'qcV&VcSMvj?*',
+                    'password' => 'qcV&VcSMvj?*',
                     'port' => '465',
                     'encryption' => 'ssl',
                     ],
