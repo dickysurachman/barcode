@@ -70,14 +70,14 @@ return [
             // for the mailer to send real emails.
             'useFileTransport' => false,
             'transport' => [
-            'class' => 'Swift_SmtpTransport',
-            //'host' => 'smtp.gmail.com',
-            'host' => '&*^*#!^#*!^&#&',
-            'username' => '*(@&$(*@&$(',
-            'password' => '*(@&$(*$&($*',
-            'port' => '587',
-            'encryption' => 'tls',
-            ],
+                    'class' => 'Swift_SmtpTransport',
+                    //'host' => 'smtp.gmail.com',
+                    'host' => 'mail.amoypreneur.com',
+                    'username' => 'barcode@amoypreneur.com',
+                    'password' => 'qcV&VcSMvj?*',
+                    'port' => '465',
+                    'encryption' => 'ssl',
+                    ],
         ], 
 
         'user' => [

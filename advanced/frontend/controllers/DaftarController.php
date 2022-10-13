@@ -346,6 +346,7 @@ public function actionUpdatescan($id)
                             ->send();
                     }
                 $model->save();
+                
                 return [
                     'forceReload'=>'#crud-datatable-pjax',
                     'title'=> "user #".$id,
