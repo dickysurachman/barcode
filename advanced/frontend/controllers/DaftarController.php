@@ -336,7 +336,7 @@ public function actionUpdatescan($id)
                     <p>Congratulation, your account have been active on <a href="https://www.amoypreneur.com/barcodesys">Barcode System</a></p>
                     <p>You can login by this email, see u on our website</p>
                     <p>Cheers :)</p>';
-                    return Yii::$app
+                    $kirim_email= Yii::$app
                             ->mailer
                             ->compose()
                             ->setFrom([Yii::$app->params['supportEmail'] => Yii::$app->name])
