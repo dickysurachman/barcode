@@ -72,9 +72,9 @@ return [
             'transport' => [
                     'class' => 'Swift_SmtpTransport',
                     //'host' => 'smtp.gmail.com',
-                    'host' => 'mail.amoypreneur.com',
-                    'username' => 'barcode@amoypreneur.com',
-                    'password' => 'qcV&VcSMvj?*',
+                    'host' => '213213123213',
+                    'username' => '23123123123123',
+                    'password' => 'qcV&22323213?*',
                     'port' => '465',
                     'encryption' => 'ssl',
                     ],
