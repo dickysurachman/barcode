@@ -9,7 +9,7 @@ use yii\helpers\ArrayHelper;
 $negara=ArrayHelper::map(Perusahaan::find()->orderBy('nama')->all(),'id','nama');
 //$tipe=['Administrator','BPTU HPT','BIB','BET']
 $hapus=['Enable','Disable'];
-$tipe=['Admin Hotel','Superadmin'];
+$tipe=['Admin Company','Superadmin'];
 $stt=['9'=>'Tidak Aktif','10'=>'Aktif'];
 ?>
 

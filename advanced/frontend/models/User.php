@@ -82,7 +82,7 @@ class User extends \yii\db\ActiveRecord
     public function getTipo(){
         $nama=$this->tipe_user2;
         if($nama==0){
-            return "Admin Hotel";
+            return "Admin Company";
         } else {
             return "Superadmin";
         }
