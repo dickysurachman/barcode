@@ -1,5 +1,5 @@
 <style>
-    .skin-blue-light .wrapper, .skin-blue-light .main-sidebar, .skin-blue-light .left-side {
+ .wrapper{
     background-color: white !important;
     }
 </style>
