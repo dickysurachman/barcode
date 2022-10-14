@@ -63,7 +63,7 @@ $kolom=[
         'header'=>'Status Delivery',
         'filter'=>false,
         'value'=>function ($model, $key, $index, $widget) { 
-                return isset($model->retur)?'RETUR '.$model->retur->tanggal:isset($model->scann)?'SENT':'NOT SENT';
+                return isset($model->retur)?'RETUR '.$model->retur->tanggal:(isset($model->scann)?'SENT':'NOT SENT');
         },
      ],
    
