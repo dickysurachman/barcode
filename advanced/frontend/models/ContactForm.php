@@ -4,7 +4,7 @@ namespace frontend\models;
 
 use Yii;
 use yii\base\Model;
-
+use app\models\Contact;
 /**
  * ContactForm is the model behind the contact form.
  */
@@ -14,6 +14,7 @@ class ContactForm extends Model
     public $email;
     public $subject;
     public $body;
+    public $barcode;
     public $verifyCode;
 
 
@@ -27,6 +28,7 @@ class ContactForm extends Model
             [['name', 'email', 'subject', 'body'], 'required'],
             // email has to be a valid email address
             ['email', 'email'],
+            [['barcode'],'string','max'=>20],
             // verifyCode needs to be entered correctly
             ['verifyCode', 'captcha'],
         ];
@@ -50,6 +52,15 @@ class ContactForm extends Model
      */
     public function sendEmail($email)
     {
+        $isi = new Contact();
+        $isi->name= $this->name;
+        $isi->email= $this->email;
+        $isi->subjek= $this->subject;
+        $isi->isi= $this->body;
+        $isi->save();
+        //$isi->name= $this->name;
+
+
         return Yii::$app->mailer->compose()
             ->setTo($email)
             ->setFrom([$this->email => $this->name])

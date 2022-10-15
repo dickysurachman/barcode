@@ -659,6 +659,26 @@ class SiteController extends Controller
             ]);
         }
     }
+    public function actionContactadmin()
+    {
+        $model = new ContactForm();
+        $user=User::findOne(Yii::$app->user->identity->id);
+        $model->name=$user->username;
+        $model->email=$user->email;
+        if ($model->load(Yii::$app->request->post()) && $model->validate()) {
+            if ($model->sendEmail(Yii::$app->params['adminEmail'])) {
+                Yii::$app->session->setFlash('success', 'Thank you for contacting us. We will respond to you as soon as possible.');
+            } else {
+                Yii::$app->session->setFlash('error', 'There was an error sending your message.');
+            }
+
+            return $this->refresh();
+        } else {
+            return $this->render('contactbarcode', [
+                'model' => $model,
+            ]);
+        }
+    }
     /**
      * Displays about page.
      *

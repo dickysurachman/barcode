@@ -27,6 +27,7 @@
                     ['label' => 'Perusahaan', 'icon' => 'photo', 'url' => ['/perusahaan']],
                     ['label' => 'Grup Kurir', 'icon' => 'motorcycle', 'url' => ['/grup']],
                     ['label' => 'Kurir Identitas', 'icon' => 'rss', 'url' => ['/kurir']],
+                    ['label' => 'Pesan', 'icon' => 'warning', 'url' => ['/pesan/index']],
                 ],
             ]
         ) ?>
@@ -70,6 +71,7 @@
                             ['label' => 'Retur', 'icon' => 'minus-circle', 'url' => ['/site/reportsumretur']],                   
                          ],
                     ],
+                    ['label' => 'Contact Us', 'icon' => 'warning', 'url' => ['/site/contactadmin']],
                 ],
             ]
         ) ?>
@@ -103,6 +105,7 @@
                             ['label' => 'Retur', 'icon' => 'minus-circle', 'url' => ['/site/reportsumretur']],                   
                          ],
                     ],
+                    ['label' => 'Contact Us', 'icon' => 'warning', 'url' => ['/site/contactadmin']],
                 ],
             ]
         )?>

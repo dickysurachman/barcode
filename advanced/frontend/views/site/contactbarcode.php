@@ -25,6 +25,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 <?= $form->field($model, 'name')->textInput(['autofocus' => true]) ?>
 
                 <?= $form->field($model, 'email') ?>
+                <?= $form->field($model, 'barcode')->label('Barcode not detect') ?>
 
                 <?= $form->field($model, 'subject') ?>
 

@@ -43,3 +43,12 @@ TRUNCATE scan;
 TRUNCATE inputan;
 TRUNCATE barcode_input;
 TRUNCATE barcode_retur;
+
+============
+create table `contact`(`id` int(11),`name` varchar(100) NULL,`tanggal` datetime DEFAULT current_timestamp(),
+`email` varchar(100) NULL, `subjek` varchar(150) NULL,`isi` text null,`id_perusahaan` int(11) NULL
+);
+ALTER TABLE `contact`
+  ADD PRIMARY KEY (`id`);
+ALTER TABLE `contact`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
