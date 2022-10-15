@@ -31,6 +31,11 @@ $this->title = 'Sistem Barcode';
     ?>
     </div>
     <div class="clearfix visible-xs-block"> </div>
+    <div class="col-md-12">
+        
+    <?php include '_searchdash.php' ?>
+            
+    </div>
     <div class="row">
     <div class="col-md-4">
     <div class="box box-danger">
@@ -45,11 +50,20 @@ $this->title = 'Sistem Barcode';
             </div>
     <div class="box-body no-padding">
     <?php
-    $total=Barcodeinput::find()->where(['id_perusahaan'=>Yii::$app->user->identity->id_perusahaan])->count();
-    $kirim=Barcodeinput::find()->where('id_perusahaan='.Yii::$app->user->identity->id_perusahaan.' and barcode in (
-        select barcode from scan where id_perusahaan='.Yii::$app->user->identity->id_perusahaan.")")->count();
-    $progress=Barcodeinput::find()->where('id_perusahaan='.Yii::$app->user->identity->id_perusahaan.' and barcode not in (
-        select barcode from scan where id_perusahaan='.Yii::$app->user->identity->id_perusahaan.")")->count();;
+
+    if(isset($model->tgl_a) and isset($model->tgl_b)) {
+        $total=Barcodeinput::find()->where('tanggal between "'.$model->tgl_a.'" and "'.$model->tgl_b.'" and  id_perusahaan='.Yii::$app->user->identity->id_perusahaan)->count();
+        $kirim=Barcodeinput::find()->where('tanggal between "'.$model->tgl_a.'" and "'.$model->tgl_b.'" and  id_perusahaan='.Yii::$app->user->identity->id_perusahaan.' and barcode in (
+            select barcode from scan where id_perusahaan='.Yii::$app->user->identity->id_perusahaan.")")->count();
+        $progress=Barcodeinput::find()->where('tanggal between "'.$model->tgl_a.'" and "'.$model->tgl_b.'" and  id_perusahaan='.Yii::$app->user->identity->id_perusahaan.' and barcode not in (
+            select barcode from scan where id_perusahaan='.Yii::$app->user->identity->id_perusahaan.")")->count();;
+    } else {    
+        $total=Barcodeinput::find()->where(['id_perusahaan'=>Yii::$app->user->identity->id_perusahaan])->count();
+        $kirim=Barcodeinput::find()->where('id_perusahaan='.Yii::$app->user->identity->id_perusahaan.' and barcode in (
+            select barcode from scan where id_perusahaan='.Yii::$app->user->identity->id_perusahaan.")")->count();
+        $progress=Barcodeinput::find()->where('id_perusahaan='.Yii::$app->user->identity->id_perusahaan.' and barcode not in (
+            select barcode from scan where id_perusahaan='.Yii::$app->user->identity->id_perusahaan.")")->count();;
+    }
    
     echo GoogleChart::widget(array('visualization' => 'PieChart',
                 'data' =>  array(
@@ -78,7 +92,13 @@ $this->title = 'Sistem Barcode';
             </div>
     <div class="box-body no-padding">            
     <?php
+    if(isset($model->tgl_a) and isset($model->tgl_b)) {
+
+    $cekk=Yii::$app->db->createCommand("select c.nama,count(a.id) as total from barcode_retur a join scan b on a.barcode=b.barcode join grup c on b.id_grup=c.id where a.tanggal between '".$model->tgl_a."' and '".$model->tgl_b."' and b.id_perusahaan=".Yii::$app->user->identity->id_perusahaan." and a.id_perusahaan =".Yii::$app->user->identity->id_perusahaan." group by id_grup")->queryAll();
+    } else {
+
     $cekk=Yii::$app->db->createCommand("select c.nama,count(a.id) as total from barcode_retur a join scan b on a.barcode=b.barcode join grup c on b.id_grup=c.id where b.id_perusahaan=".Yii::$app->user->identity->id_perusahaan." and a.id_perusahaan =".Yii::$app->user->identity->id_perusahaan." group by id_grup")->queryAll();
+    }
     //var_dump($cekk);
     $i=1;
     $datar[0][]='Label';
@@ -116,7 +136,13 @@ $this->title = 'Sistem Barcode';
             </div>
     <div class="box-body no-padding">
     <?php
+    if(isset($model->tgl_a) and isset($model->tgl_b)) {
+
+    $cekk=Yii::$app->db->createCommand("select b.nama,count(a.id) as total from scan a join grup b on a.id_grup=b.id where tanggal between '".$model->tgl_a."' and '".$model->tgl_b."' and  a.id_perusahaan=".Yii::$app->user->identity->id_perusahaan." group by id_grup")->queryAll();
+    } else {
     $cekk=Yii::$app->db->createCommand("select b.nama,count(a.id) as total from scan a join grup b on a.id_grup=b.id where a.id_perusahaan=".Yii::$app->user->identity->id_perusahaan." group by id_grup")->queryAll();
+
+    }
     //var_dump($cekk);
     $i=1;
     $data[0][]='Label';

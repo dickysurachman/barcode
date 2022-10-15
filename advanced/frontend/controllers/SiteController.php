@@ -561,12 +561,22 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
+        if(Yii::$app->user->isGuest) {
+            return $this->render('indexmimin');
+        } else {
         if(Yii::$app->user->identity->tipe_user2==1){
 
         return $this->render('indexmimin');
         } else {
+            $model= new ScanSearch();
+            $request = Yii::$app->request;
+                if($model->load($request->post())){
 
-        return $this->render('index');
+                    return $this->render('index',['model'=>$model]);
+                }
+//                return $this->render('indexmember',['model'=>$model]);
+              return $this->render('index',['model'=>$model]);
+        }
         }
     }
 
