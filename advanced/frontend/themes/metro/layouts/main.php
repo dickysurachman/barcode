@@ -1,10 +1,14 @@
 <?php
 use yii\helpers\Html;
-
+use app\models\User;
 /* @var $this \yii\web\View */
 /* @var $content string */
-
-$this->title="Sistem Barcode";
+if(Yii::$app->user->isGuest){
+    $this->title="Sistem Barcode";
+} else {
+    $user=User::findOne(Yii::$app->user->identity->id);
+    $this->title=$user->kompeni->nama;
+}
 if (Yii::$app->controller->action->id == 'login' or Yii::$app->controller->action->id == 'loginbarcode' or Yii::$app->controller->action->id == 'reset' or Yii::$app->controller->action->id == 'signup') { 
 /**
  * Do not use this code in your template. Remove it. 
