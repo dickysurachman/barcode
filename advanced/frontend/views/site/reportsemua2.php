@@ -10,7 +10,7 @@ use scotthuangzl\googlechart\GoogleChart;
 $userx=User::findOne(Yii::$app->user->identity->id);
 $this->title=$userx->kompeni->nama;
 $nmm=$userx->kompeni->nama;
-echo "<h3>".$nmm."</h3><h3>Report Summary from ".date('d-m-Y',strtotime($tgl_a))." until ".date('d-m-Y',strtotime($tgl_b))." </h3>";
+echo "<h3>".$nmm."</h3><h3> Packing Not Done Report Summary from ".date('d-m-Y',strtotime($tgl_a))." until ".date('d-m-Y',strtotime($tgl_b))." </h3>";
 ?>
 
 <h4>Grup Summary</h4>
