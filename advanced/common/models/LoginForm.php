@@ -52,6 +52,10 @@ class LoginForm extends Model
                     if($haha->status==1){
                         $this->addError($attribute, 'Perusahaan anda tidak aktif, silahkan hubungi kami');
                     }
+                    $now = date('Y-m-d');
+                    if($haha->expiredate<$now){
+                        $this->addError($attribute, 'Perusahaan anda tidak aktif, silahkan hubungi kami');
+                    }
                 }
             }
         }
