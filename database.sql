@@ -52,3 +52,7 @@ ALTER TABLE `contact`
   ADD PRIMARY KEY (`id`);
 ALTER TABLE `contact`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+=================
+alter table `contact` add status int(2) DEFAULT 0;
+alter table `perusahaan` add expiredate date NULL; 
+update `perusahaan` set expiredate=DATE_ADD(now(), INTERVAL 7 DAY);

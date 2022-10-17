@@ -44,6 +44,7 @@ class Perusahaan extends \yii\db\ActiveRecord
             [['email'], 'string', 'max' => 150],
             [['kodebon'], 'string', 'max' => 3],
             [['logo_1','logo_2','logo_3'], 'string', 'max' => 200],
+            [['expiredate'],'safe'],
         ];
     }
 
@@ -56,6 +57,7 @@ class Perusahaan extends \yii\db\ActiveRecord
             'id' => 'ID',
             'nama' => 'Nama Perusahaan',
             'alamat' => 'Alamat',
+            'expiredate' => 'Expired Date',
             'kota' => 'Kota',
             'batas' => 'Character Batas',
             'timer1' => 'Timer Scan (ms)',
@@ -74,5 +76,21 @@ class Perusahaan extends \yii\db\ActiveRecord
             'logo_3' => 'Kartu Belakang',
             'status' => 'Status',
         ];
+    }
+
+      public function beforeSave($insert)
+    {
+        if (parent::beforeSave($insert)) {
+            // Place your custom code here
+            //$hh=Yii::$app->db->createCommand('SET FOREIGN_KEY_CHECKS=0');
+            if($this->isNewRecord)
+                    {
+                        $Date = date('Y-m-d');
+                        $this->expiredate=date('Y-m-d', strtotime($Date. ' + 7 days'));
+                    }
+            return true;
+        } else {
+            return false;
+        }
     }
 }

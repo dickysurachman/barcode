@@ -70,7 +70,7 @@ class User extends \yii\db\ActiveRecord
         if($nama==0){
             return "Administrator";
         }else if ($nama==1){
-            return "FO Scan";
+            return "Operator Scan";
         }else if ($nama==2){
             return "Cetak Kartu";
         }else if ($nama==3){

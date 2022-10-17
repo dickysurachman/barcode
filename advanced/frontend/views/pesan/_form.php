@@ -5,6 +5,7 @@ use yii\widgets\ActiveForm;
 /* @var $this yii\web\View */
 /* @var $model app\models\Contact */
 /* @var $form yii\widgets\ActiveForm */
+$lis=['0'=>'On Progress','1'=>'Done'];
 ?>
 
 <div class="contact-form">
@@ -20,8 +21,8 @@ use yii\widgets\ActiveForm;
     <?= $form->field($model, 'subjek')->textInput(['maxlength' => true]) ?>
 
     <?= $form->field($model, 'isi')->textarea(['rows' => 6]) ?>
+    <?= $form->field($model, 'status')->dropDownList($lis); ?>
 
-    <?= $form->field($model, 'id_perusahaan')->textInput() ?>
 
   
 	<?php if (!Yii::$app->request->isAjax){ ?>

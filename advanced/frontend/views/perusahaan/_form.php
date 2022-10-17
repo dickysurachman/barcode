@@ -2,6 +2,7 @@
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 use kartik\file\FileInput;
+use yii\jui\DatePicker;
 /* @var $this yii\web\View */
 /* @var $model app\models\Perusahaan */
 /* @var $form yii\widgets\ActiveForm */
@@ -27,10 +28,22 @@ $tipe=['Aktif','Tidak Aktif'];
     </div><div class="col-md-2">
     <?= $form->field($model, 'email')->textInput(['maxlength' => true]) ?>
     </div>
-    <div class="col-md-3">
+    <div class="col-md-2">
     <?= $form->field($model, 'status')->dropDownList($tipe) ?>
     </div>
-    <div class="col-md-3">
+    <div class="col-md-2">
+   <label>Expired Date</label>
+    <?php
+    echo DatePicker::widget([
+    'model'  => $model,
+    'attribute'=>'expiredate',
+    'language' => 'en',
+    'dateFormat' => 'yyyy-MM-dd',
+    'options'=>['class'=>'form-control','readonly'=>'readonly'
+    ]]);
+    ?>
+    </div>
+    <div class="col-md-2">
     <?= $form->field($model, 'limitan')->textInput(['maxlength' => true]) ?>
     </div>
 

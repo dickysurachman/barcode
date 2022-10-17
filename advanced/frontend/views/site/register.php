@@ -8,6 +8,7 @@ use yii\bootstrap\ActiveForm;
 use yii\captcha\Captcha;
 $this->title = 'Register Member';
 $this->params['breadcrumbs'][] = $this->title;
+$user=['1','2','3','4','5','6','7','8','9','10'];
 ?>
 <div class="site-signup">
     <h1><?= Html::encode($this->title) ?></h1>
@@ -29,6 +30,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 <?= $form->field($model, 'kota')->textInput(['maxlength' => true]) ?>
                 <?= $form->field($model, 'telp')->textInput(['maxlength' => true]) ?>
                 <?= $form->field($model, 'fax')->textInput(['maxlength' => true]) ?>
+                <?= $form->field($model, 'jumlahuser')->dropDownList($user) ?>
                 <?= $form->field($model, 'verifyCode')->widget(Captcha::className(), [
                     'template' => '<div class="row"><div class="col-lg-3">{image}</div><div class="col-lg-6">{input}</div></div>',
                 ]) ?>

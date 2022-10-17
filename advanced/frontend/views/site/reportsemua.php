@@ -6,7 +6,10 @@ use app\models\Perusahaan;
 use app\models\User;
 use app\models\Grup;
 use scotthuangzl\googlechart\GoogleChart;
-echo "<h3>Report Summary from ".date('d-m-Y',strtotime($tgl_a))." until ".date('d-m-Y',strtotime($tgl_b))." </h3>";
+$user=User::findOne(Yii::$app->user->identity->id);
+$this->title=$user->kompeni->nama;
+$nmm=$user->kompeni->nama;
+echo "<h3>".$nmm."</h3><h3>Report Summary from ".date('d-m-Y',strtotime($tgl_a))." until ".date('d-m-Y',strtotime($tgl_b))." </h3>";
 ?>
 
 <h4>Grup Summary</h4>

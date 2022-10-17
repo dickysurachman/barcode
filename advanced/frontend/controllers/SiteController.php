@@ -34,6 +34,7 @@ use app\models\Barcoderetur;
 use app\models\BarcodereturSearch;
 use app\models\Barcode;
 use app\models\BarcodeSearch;
+use app\models\ContactSearch;
 /**
  * Site controller
  */
@@ -84,6 +85,17 @@ class SiteController extends Controller
             ],
         ];
     }
+    public function actionContactdata()
+    {    
+        $searchModel = new ContactSearch();
+        $dataProvider = $searchModel->searchmember(Yii::$app->request->queryParams);
+
+        return $this->render('kontak', [
+            'searchModel' => $searchModel,
+            'dataProvider' => $dataProvider,
+        ]);
+    }
+
 
     public function actionExx() {
         $inputtt=Barcodeinput::find()->where(['id_perusahaan'=>Yii::$app->user->identity->id_perusahaan])->all();

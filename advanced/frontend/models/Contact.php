@@ -51,8 +51,17 @@ class Contact extends \yii\db\ActiveRecord
             'email' => Yii::t('yii', 'Email'),
             'subjek' => Yii::t('yii', 'Subjek'),
             'isi' => Yii::t('yii', 'Isi'),
+            'statusnye' => Yii::t('yii', 'Status'),
             'id_perusahaan' => Yii::t('yii', 'Perusahaan'),
         ];
+    }
+    public function getStatusnye(){
+        if($this->status==0) {
+            return 'On Progress';
+        } else {
+            return 'Done';
+
+        }
     }
 
         public function beforeSave($insert)

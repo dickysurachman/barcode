@@ -22,7 +22,7 @@ class Register extends Model
     public $telp;
     public $fax;
     public $verifyCode;
-
+    public $jumlahuser;
     /**
      * @inheritdoc
      */
@@ -44,6 +44,7 @@ class Register extends Model
 
             ['password', 'required'],
             ['password', 'string', 'min' => 6],
+            [['jumlahuser'],'integer'],
             [['nama','kota'], 'string', 'max' => 100],
              [['alamat'], 'string', 'max' => 250],
             [['telp', 'fax'], 'string', 'max' => 30],
@@ -61,6 +62,7 @@ class Register extends Model
         return [
                     'nama' => 'Nama Perusahaan',
                     'alamat' => 'Alamat',
+                    'jumlahuser' => 'User Needs',
                     'kota' => 'Kota',
                     'telp' => 'Telp',
                     'fax' => 'Fax',
@@ -108,6 +110,7 @@ class Register extends Model
         $company->urutbon = 0;
         $company->urutdepo = 0;
         $company->urutoutlet = 0;
+        $company->limitan = $this->jumlahuser;
         $company->save();
         $user = new User();
         $user->username = $this->username;

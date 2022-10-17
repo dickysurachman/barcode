@@ -10,7 +10,7 @@ use kartik\file\FileInput;
 $negara=ArrayHelper::map(Profile::find()->where(['id_perusahaan'=>Yii::$app->user->identity->id_perusahaan])->orderBy('nama')->all(),'id','nama');
 //$tipe=['Administrator','BPTU HPT','BIB','BET']
 $hapus=['Enable','Disable'];
-$tipe=['Administrator','FO Scan','Cetak Kartu','FO Leader'];
+$tipe=['Administrator','Operator Scan'];
 ?>
 
 <div class="user-form">

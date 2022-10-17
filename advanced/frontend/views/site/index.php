@@ -72,7 +72,7 @@ $this->title = 'Sistem Barcode';
                     array('Kirim', intval($kirim)),
                     array('On Progress', intval($progress))
                 ),
-                'options' => array('title' => '','height'=>350,'legend'=>['position'=>'none']))); 
+                'options' => array('title' => '','height'=>350))); 
     
     //$dua=Yii::$app->db->createCommand
     ?>

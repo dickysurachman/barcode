@@ -68,4 +68,33 @@ class ContactSearch extends Contact
 
         return $dataProvider;
     }
+    public function searchmember($params)
+    {
+        $query = Contact::find();
+
+        $dataProvider = new ActiveDataProvider([
+            'query' => $query,
+        ]);
+
+        $this->load($params);
+
+        if (!$this->validate()) {
+            // uncomment the following line if you do not want to return any records when validation fails
+            // $query->where('0=1');
+            return $dataProvider;
+        }
+
+        $query->andFilterWhere([
+            'id' => $this->id,
+            'tanggal' => $this->tanggal,
+            'id_perusahaan' => Yii::$app->user->identity->id_perusahaan,
+        ]);
+
+        $query->andFilterWhere(['like', 'name', $this->name])
+            ->andFilterWhere(['like', 'email', $this->email])
+            ->andFilterWhere(['like', 'subjek', $this->subjek])
+            ->andFilterWhere(['like', 'isi', $this->isi]);
+
+        return $dataProvider;
+    }
 }
