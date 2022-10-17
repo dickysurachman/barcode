@@ -54,7 +54,7 @@ class LoginForm extends Model
                     }
                     $now = date('Y-m-d');
                     if($haha->expiredate<$now){
-                        $this->addError($attribute, 'Perusahaan anda tidak aktif, silahkan hubungi kami');
+                        $this->addError($attribute, 'Perusahaan anda sudah melewati batas expired date, silahkan hubungi kami');
                     }
                 }
             }
