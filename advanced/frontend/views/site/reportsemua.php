@@ -62,7 +62,7 @@ echo "<h3>".$nmm."</h3><h3>Report Summary from ".date('d-m-Y',strtotime($tgl_a))
 		?>
 		<tr>
 			<td style="text-align:center;"><?php echo $i ?></td>
-			<td style="text-align:center;"><?php echo isset($nama->nama?$nama->nama:'') ?></td>
+			<td style="text-align:center;"><?php echo (isset($nama->nama)?$nama->nama:'') ?></td>
 			<td style="text-align:center;"><?php echo $key['jml'] ?></td>
 		</tr>
 
