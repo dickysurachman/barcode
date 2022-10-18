@@ -52,7 +52,7 @@ class Contact extends \yii\db\ActiveRecord
             'email' => Yii::t('yii', 'Email'),
             'subjek' => Yii::t('yii', 'Subjek'),
             'barcode' => Yii::t('yii', 'Barcode'),
-            'isi' => Yii::t('yii', 'Isi'),
+            'isi' => Yii::t('yii', 'Description'),
             'statusnye' => Yii::t('yii', 'Status'),
             'id_perusahaan' => Yii::t('yii', 'Perusahaan'),
         ];
