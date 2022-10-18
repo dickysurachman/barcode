@@ -56,3 +56,5 @@ ALTER TABLE `contact`
 alter table `contact` add status int(2) DEFAULT 0;
 alter table `perusahaan` add expiredate date NULL; 
 update `perusahaan` set expiredate=DATE_ADD(now(), INTERVAL 7 DAY);
+=============================
+alter table `contact` add barcode varchar(20) NULL;

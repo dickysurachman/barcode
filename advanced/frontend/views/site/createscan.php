@@ -9,7 +9,7 @@ $hihi=Yii::$app->session->getFlash('danger');
 $huhu=Yii::$app->session->getFlash('success');
 if(isset($hihi)){
 ?>
-<audio autoplay="autoplay" controls="false" loop="true">  
+<audio autoplay="autoplay" controls="false" >  
    <source src="<?php echo Yii::$app->homeUrl ?>/new_user.mp3" />  
 </audio>
   <script>
@@ -20,7 +20,7 @@ if(isset($hihi)){
 <?php } 
 if(isset($huhu)){
 ?>
-<audio autoplay="autoplay" controls="false" loop="false">  
+<audio autoplay="autoplay" controls="false" >  
    <source src="<?php echo Yii::$app->homeUrl ?>/doorbell.mp3" />  
 </audio>
   <script>

@@ -59,7 +59,7 @@ $kolom=[
 
 ?>
 <div class="barcoderetur-index">
-    <?php  echo $this->render('_searchd', ['model' => $searchModel]); ?>
+    <?php  echo $this->render('_searchdretur', ['model' => $searchModel]); ?>
 
     <div id="ajaxCrudDatatable">
         <?=GridView::widget([

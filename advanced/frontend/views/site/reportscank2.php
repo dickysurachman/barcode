@@ -69,7 +69,7 @@ $kolom=[
    
 ];
 ?>
-<?php  echo $this->render('_searchd', ['model' => $searchModel]); ?>
+<?php  echo $this->render('_searchdk', ['model' => $searchModel]); ?>
 <div class="scan-index">
     <div id="ajaxCrudDatatable">
         <?=GridView::widget([

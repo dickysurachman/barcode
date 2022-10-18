@@ -20,6 +20,10 @@ return [
     ],
     [
         'class'=>'\kartik\grid\DataColumn',
+        'attribute'=>'barcode',
+    ],
+    [
+        'class'=>'\kartik\grid\DataColumn',
         'attribute'=>'tanggal',
     ],
     [

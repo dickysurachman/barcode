@@ -184,7 +184,7 @@ class SiteController extends Controller
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
         ]);
-    }   
+    }   //http://localhost/barcode/barcode/user.html
     public function actionReportsumretur(){
         $model = new ScanSearch();
         if ($model->load(Yii::$app->request->post())) {
@@ -419,7 +419,7 @@ class SiteController extends Controller
             }             
             } else {
             
-            Yii::$app->session->setFlash('danger', 'Data barcode tidak ditemukan ');
+            Yii::$app->session->setFlash('danger', 'Data barcode tidak ditemukan, silahkan set expedisi terlebih dahulu');
 
             }
 			}

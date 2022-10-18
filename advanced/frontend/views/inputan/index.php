@@ -18,6 +18,8 @@ CrudAsset::register($this);
 ?>
 <div class="barcodeinput-index">
     <?php  echo $this->render('_searchd', ['model' => $searchModel]); ?>
+
+    <?= Html::a('Template Data', Yii::$app->homeUrl.'contoh.csv',['class'=>'btn btn-info btn-block btn-flat']) ?>.
     <div id="ajaxCrudDatatable">
         <?=GridView::widget([
             'id'=>'crud-datatable',

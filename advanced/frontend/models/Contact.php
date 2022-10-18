@@ -36,6 +36,7 @@ class Contact extends \yii\db\ActiveRecord
             [['id_perusahaan'], 'integer'],
             [['name', 'email'], 'string', 'max' => 100],
             [['subjek'], 'string', 'max' => 150],
+            [['barcode'], 'string', 'max' => 20],
         ];
     }
 
@@ -50,6 +51,7 @@ class Contact extends \yii\db\ActiveRecord
             'tanggal' => Yii::t('yii', 'Date'),
             'email' => Yii::t('yii', 'Email'),
             'subjek' => Yii::t('yii', 'Subjek'),
+            'barcode' => Yii::t('yii', 'Barcode'),
             'isi' => Yii::t('yii', 'Isi'),
             'statusnye' => Yii::t('yii', 'Status'),
             'id_perusahaan' => Yii::t('yii', 'Perusahaan'),

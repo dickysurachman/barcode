@@ -55,6 +55,7 @@ class ContactForm extends Model
         $isi = new Contact();
         $isi->name= $this->name;
         $isi->email= $this->email;
+        $isi->barcode= $this->barcode;
         $isi->subjek= $this->subject;
         $isi->isi= $this->body;
         $isi->save();

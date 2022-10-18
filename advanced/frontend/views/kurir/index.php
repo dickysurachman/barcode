@@ -17,6 +17,7 @@ CrudAsset::register($this);
 
 ?>
 <div class="kurir-index">
+
     <div id="ajaxCrudDatatable">
         <?=GridView::widget([
             'id'=>'crud-datatable',

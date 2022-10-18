@@ -12,15 +12,7 @@ $lis=['0'=>'On Progress','1'=>'Done'];
 
     <?php $form = ActiveForm::begin(); ?>
 
-    <?= $form->field($model, 'name')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'tanggal')->textInput() ?>
-
-    <?= $form->field($model, 'email')->textInput(['maxlength' => true]) ?>
-
-    <?= $form->field($model, 'subjek')->textInput(['maxlength' => true]) ?>
-
-    <?= $form->field($model, 'isi')->textarea(['rows' => 6]) ?>
     <?= $form->field($model, 'status')->dropDownList($lis); ?>
 
 
