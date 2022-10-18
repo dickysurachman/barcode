@@ -33,7 +33,7 @@ class Contact extends \yii\db\ActiveRecord
         return [
             [['tanggal'], 'safe'],
             [['isi'], 'string'],
-            [['id_perusahaan'], 'integer'],
+            [['id_perusahaan','status'], 'integer'],
             [['name', 'email'], 'string', 'max' => 100],
             [['subjek'], 'string', 'max' => 150],
             [['barcode'], 'string', 'max' => 20],
