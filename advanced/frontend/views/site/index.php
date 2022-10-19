@@ -70,7 +70,7 @@ $this->title = 'Sistem Barcode';
                     array('Label', 'Value'),
                     //array('Input', intval($total)),
                     array('Terpacking', intval($kirim)),
-                    array('On Progress', intval($progress))
+                    array('Belum Terpacking', intval($progress))
                 ),
                 'options' => array('title' => '','height'=>350))); 
     

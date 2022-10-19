@@ -141,7 +141,7 @@ echo "<h3>".$nmm."</h3><h3>Laporan Resi Belum Terpacking Periode ".date('d-m-Y',
                     array('Label', 'Value'),
                     //array('Input', intval($total)),
                     array('Terpacking', intval($kirim)),
-                    array('On Progress', intval($progress))
+                    array('Belum Terpacking', intval($progress))
                 ),
                 'options' => array('title' => '','height'=>350,'legend'=>['position'=>'none']))); 
     
