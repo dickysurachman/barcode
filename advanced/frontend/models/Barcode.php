@@ -34,7 +34,7 @@ class Barcode extends \yii\db\ActiveRecord
             [['tanggal', 'add_date', 'edit_date'], 'safe'],
             [['add_who', 'edit_who','id_perusahaan'], 'integer'],
             [['barcode'], 'string', 'max' => 50],
-            [['barcode'], 'unique'],
+            //[['barcode'], 'unique'],
             [['barcode'], 'required'],
         ];
     }
