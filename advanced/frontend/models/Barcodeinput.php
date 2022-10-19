@@ -76,7 +76,7 @@ class Barcodeinput extends \yii\db\ActiveRecord
     }
      public function getScann()
     {
-        return $this->hasOne(Scan::className(), ['barcode' => 'barcode']);
+        return $this->hasOne(Scan::className(), ['barcode' => 'barcode','id_perusahaan'=>'id_perusahaan']);
     }
 
     public function beforeSave($insert)

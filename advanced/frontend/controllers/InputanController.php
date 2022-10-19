@@ -12,6 +12,9 @@ use \yii\web\Response;
 use yii\helpers\Html;
 use yii\filters\AccessControl;
 use yii\web\UploadedFile;
+use app\models\Scan;
+use app\models\Barcode;
+use app\models\Barcoderetur;
 /**
  * InputanController implements the CRUD actions for Barcodeinput model.
  */
@@ -260,7 +263,13 @@ class InputanController extends Controller
         $cek=Yii::$app->user->identity->delete;
         if($cek==0){
         $request = Yii::$app->request;
-        $this->findModel($id)->delete();
+        $mako=$this->findModel($id);
+        $scan=Scan::findOne(['barcode'=>$mako->barcode,'id_perusahaan'=>Yii::$app->user->identity->id_perusahaan]);
+        if(!isset($scan)){
+            $barr=Barcode::findOne(['barcode'=>$mako->barcode,'id_perusahaan'=>Yii::$app->user->identity->id_perusahaan]);
+            $barr->delete();
+        }            
+        $mako->delete();
         } else {
             return $this->redirect(['site/abut','id'=>'Not Authorize']);
             die();
@@ -296,8 +305,15 @@ class InputanController extends Controller
         $request = Yii::$app->request;
         $pks = explode(',', $request->post( 'pks' )); // Array or selected records primary keys
         foreach ( $pks as $pk ) {
-            $model = $this->findModel($pk);
-            $model->delete();
+            //$model = $this->findModel($pk);
+            $mako=$this->findModel($id);
+            $scan=Scan::findOne(['barcode'=>$mako->barcode,'id_perusahaan'=>Yii::$app->user->identity->id_perusahaan]);
+            if(!isset($scan)){
+                $barr=Barcode::findOne(['barcode'=>$mako->barcode,'id_perusahaan'=>Yii::$app->user->identity->id_perusahaan]);
+                $barr->delete();
+            }            
+            $mako->delete();
+            //$model->delete();
         }
         } else {
             return $this->redirect(['site/abut','id'=>'Not Authorize']);

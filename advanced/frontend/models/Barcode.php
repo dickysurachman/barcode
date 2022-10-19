@@ -58,16 +58,16 @@ class Barcode extends \yii\db\ActiveRecord
 
     public function getScann()
     {
-        return $this->hasOne(Scan::className(), ['barcode' => 'barcode']);
+        return $this->hasOne(Scan::className(), ['barcode' => 'barcode','id_perusahaan'=>'id_perusahaan']);
     }
 
     public function getRetur()
     {
-        return $this->hasOne(Barcoderetur::className(), ['barcode' => 'barcode']);
+        return $this->hasOne(Barcoderetur::className(), ['barcode' => 'barcode','id_perusahaan'=>'id_perusahaan']);
     }
     public function getInput()
     {
-        return $this->hasOne(Barcodeinput::className(), ['barcode' => 'barcode']);
+        return $this->hasOne(Barcodeinput::className(), ['barcode' => 'barcode','id_perusahaan'=>'id_perusahaan']);
     }
 
     public function beforeSave($insert)

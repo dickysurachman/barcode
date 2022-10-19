@@ -11,6 +11,8 @@ use yii\filters\VerbFilter;
 use \yii\web\Response;
 use yii\helpers\Html;
 use yii\filters\AccessControl;
+use app\models\Barcode;
+use app\models\Barcodeinput;
 /**
  * ScanController implements the CRUD actions for Scan model.
  */
@@ -247,7 +249,14 @@ class ScanController extends Controller
         if($cek==0){
 
         $request = Yii::$app->request;
-        $this->findModel($id)->delete();
+        $mako=$this->findModel($id);
+            $scan=Barcodeinput::findOne(['barcode'=>$mako->barcode,'id_perusahaan'=>Yii::$app->user->identity->id_perusahaan]);
+            if(!isset($scan)){
+                $barr=Barcode::findOne(['barcode'=>$mako->barcode,'id_perusahaan'=>Yii::$app->user->identity->id_perusahaan]);
+                $barr->delete();
+            }            
+            $mako->delete();
+        //$this->findModel($id)->delete();
         } else {
             return $this->redirect(['site/abut','id'=>'Not Authorize']);
             die();
@@ -277,7 +286,7 @@ class ScanController extends Controller
      * @param integer $id
      * @return mixed
      */
-    public function actionBulkDelete()
+    public function actionBulkDeletexxxx()
     {        
         $request = Yii::$app->request;
         $pks = explode(',', $request->post( 'pks' )); // Array or selected records primary keys

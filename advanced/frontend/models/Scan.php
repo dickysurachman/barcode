@@ -78,11 +78,11 @@ class Scan extends \yii\db\ActiveRecord
     }
     public function getRetur()
     {
-        return $this->hasOne(Barcoderetur::className(), ['barcode' => 'barcode']);
+        return $this->hasOne(Barcoderetur::className(), ['barcode' => 'barcode','id_perusahaan'=>'id_perusahaan']);
     }
     public function getInput()
     {
-        return $this->hasOne(Barcodeinput::className(), ['barcode' => 'barcode']);
+        return $this->hasOne(Barcodeinput::className(), ['barcode' => 'barcode','id_perusahaan'=>'id_perusahaan']);
     }
 
 
