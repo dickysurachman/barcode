@@ -139,8 +139,8 @@ echo "<h3>".$nmm."</h3><h3>Laporan Resi Belum Terpacking Periode ".date('d-m-Y',
     echo GoogleChart::widget(array('visualization' => 'PieChart',
                 'data' =>  array(
                     array('Label', 'Value'),
-                    array('Input', intval($total)),
-                    array('Kirim', intval($kirim)),
+                    //array('Input', intval($total)),
+                    array('Terpacking', intval($kirim)),
                     array('On Progress', intval($progress))
                 ),
                 'options' => array('title' => '','height'=>350,'legend'=>['position'=>'none']))); 

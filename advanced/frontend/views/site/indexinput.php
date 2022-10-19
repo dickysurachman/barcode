@@ -47,7 +47,7 @@ $kolom=[
     [
         'class'=>'\kartik\grid\DataColumn',
         'attribute'=>'add_date',
-        'header'=>'Scan Kirim',
+        'header'=>'Scan Packing',
         'filter'=>false,
         'value'=>function ($model, $key, $index, $widget) { 
                 return isset($model->scann)?$model->scann->add_date:'NOT PACKED';

@@ -40,7 +40,7 @@ $this->title = 'Sistem Barcode';
     <div class="col-md-5">
     <div class="box box-danger">
         <div class="box-header with-border">
-              <h3 class="box-title">Scan Input</h3>
+              <h3 class="box-title">Resi Belum Packing</h3>
 
               <div class="box-tools pull-right">
                 <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
@@ -68,8 +68,8 @@ $this->title = 'Sistem Barcode';
     echo GoogleChart::widget(array('visualization' => 'PieChart',
                 'data' =>  array(
                     array('Label', 'Value'),
-                    array('Input', intval($total)),
-                    array('Kirim', intval($kirim)),
+                    //array('Input', intval($total)),
+                    array('Terpacking', intval($kirim)),
                     array('On Progress', intval($progress))
                 ),
                 'options' => array('title' => '','height'=>350))); 
@@ -82,7 +82,7 @@ $this->title = 'Sistem Barcode';
     <div class="col-md-7">
     <div class="box box-info">
         <div class="box-header with-border">
-              <h3 class="box-title">Scan Retur</h3>
+              <h3 class="box-title">Resi Retur</h3>
 
               <div class="box-tools pull-right">
                 <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
@@ -126,7 +126,7 @@ $this->title = 'Sistem Barcode';
 
     <div class="box box-success">
         <div class="box-header with-border">
-              <h3 class="box-title">Scan Kirim</h3>
+              <h3 class="box-title">Resi Terpacking</h3>
 
               <div class="box-tools pull-right">
                 <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
