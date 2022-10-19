@@ -30,7 +30,7 @@ class Inputan extends \yii\db\ActiveRecord
     {
         return [
              
-        [['barcode'], 'unique'],
+        //[['barcode'], 'unique'],
             [['barcode'], 'required'],
             [['id_perusahaan', 'status','id_group'], 'integer'],
             [['barcode'], 'string', 'max' => 30],

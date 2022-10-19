@@ -41,6 +41,7 @@ delete from grup WHERE id_perusahaan=4;
 alter table `perusahaan` add limitan int(3) DEFAULT 1;
 TRUNCATE scan;
 TRUNCATE inputan;
+TRUNCATE barcode;
 TRUNCATE barcode_input;
 TRUNCATE barcode_retur;
 

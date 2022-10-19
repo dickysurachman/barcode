@@ -16,8 +16,9 @@ if(isset($timerr)){
 $this->registerJs(
 '
 var formURL = $("#formSubmit").attr("action");
-setInterval(cekdata,'.$durasi.');
-function cekdata(){
+var pertama=setInterval(
+function cekdata(){ 
+	clearInterval(pertama);
 	var msg=$("#inputan-barcode").val();	
 	if((msg.length>'.$batas.')){
         var check =0;
@@ -31,54 +32,30 @@ function cekdata(){
 			}
           });
 		  if((check==1)&&(hit>1)){
-			 kirim();
-		  }
-	}
-};
-function kirim(){
-	 var formData = new FormData();
-					var message = $("#inputan-barcode").val();
-					formData.append( "Inputan[barcode]", message);
-                   $.ajax({
+			 var formData = new FormData();
+			 var message = $("#inputan-barcode").val();
+			 formData.append( "Inputan[barcode]", message);
+             $.ajax({
 					url : formURL,
 					type: "POST",
 					data : formData,
 					contentType: false,
 					processData: false,
 					success: function(res){
-					   $("#room_type").html(res);
+						$("#room_type").html(res);
 					   $("#inputan-barcode").val("");
 					   $("#inputan-barcode").focus();
 					},
 					error: function(res){
-						$("#room_type").text("Error!");
-						
+						$("#room_type").text("Error!");					
 					}
                 });
-};
-$("#formSubmit").on("submit",function(e){
-        var formData = new FormData(this);
-        var formURL = $("#formSubmit").attr("action");
-        $.ajax(
-        {
-            url : formURL,
-            type: "POST",
-            data : formData,
-            contentType: false,
-            processData: false,
-            success: function(res){
-               $("#room_type").html(res);
-               $("#inputan-barcode").val("");
-               $("#inputan-barcode").focus();
-            },
-            error: function(res){
-                $("#room_type").text("Error!");
-                
-            }
-        });
-        e.preventDefault();
-       
-    });'
+        
+            setTimeout(function(){}, '.$durasi.');
+			var pertama=setInterval(cekdata,'.$durasi.');
+			clearInterval(pertama);
+			}
+	}},'.$durasi.');'
 );
 ?>
 <div class="scan-create">

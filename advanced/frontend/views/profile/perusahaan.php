@@ -37,6 +37,7 @@ use kartik\file\FileInput;
     </div><div class="col-md-3">
     <?= $form->field($model, 'email')->textInput(['maxlength' => true]) ?>
     </div>
+    <div class="row">
     <div class="col-md-4">
     <?php
    if(trim($model->logo_1)<>""){
@@ -109,7 +110,8 @@ use kartik\file\FileInput;
     }
      ?>
     </div>
-  
+   </div>
+     
 	<?php if (!Yii::$app->request->isAjax){ ?>
 	  	<div class="form-group">
 	        <?= Html::submitButton($model->isNewRecord ? 'Create' : 'Update', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
