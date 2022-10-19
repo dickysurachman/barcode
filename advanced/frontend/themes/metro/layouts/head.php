@@ -1,8 +1,20 @@
 <?php
 use yii\helpers\Html;
+use app\models\Perusahaan;
+
 $notif=0;
 
-/* @var $this \yii\web\View */
+$pe=Perusahaan::findOne(Yii::$app->user->identity->id_perusahaan);
+
+$date_expire =  date('Y-m-d H:i:s',strtotime($pe->expiredate));    
+$date = new DateTime($date_expire);
+$now = new DateTime();
+
+//$notifx= $date->diff($now)->format("Expired on %d days, %h hours and %i minutes");
+$notifx= $date->diff($now)->format("Expired on %d days");
+
+$notif2='<li><a href="#"><i class="fa fa-users text-aqua"></i>'. $notifx .' </a></li>
+';/* @var $this \yii\web\View */
 /* @var $content string */
 ?>
 
@@ -27,6 +39,7 @@ $notif=0;
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true">
                       <i class="fa fa-bell-o"></i>
                       <?php 
+                      $notif=1;
                       if($notif>0){
                         ?>
                       <span class="label label-warning"><?php echo $notif ?></span>

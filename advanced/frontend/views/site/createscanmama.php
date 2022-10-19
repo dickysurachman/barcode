@@ -132,7 +132,7 @@ if(isset($huhu)){
 $command = (new \yii\db\Query())
     ->select(['barcode','id_group','foto','nama'])
     ->from('inputan')
-    ->where(['status' =>1])
+    ->where(['status' =>1,'id_perusahaan'=>Yii::$app->user->identity->id_perusahaan])
 	 ->orderBy(['id' => SORT_DESC])
 	 ->limit(5)
 	->createCommand()->queryAll();
