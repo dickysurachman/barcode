@@ -10,7 +10,8 @@ use scotthuangzl\googlechart\GoogleChart;
 $userx=User::findOne(Yii::$app->user->identity->id);
 $this->title=$userx->kompeni->nama;
 $nmm=$userx->kompeni->nama;
-echo "<h3>".$nmm."</h3><h3> Packing Not Done Report Summary from ".date('d-m-Y',strtotime($tgl_a))." until ".date('d-m-Y',strtotime($tgl_b))." </h3>";
+//echo "<h3>".$nmm."</h3><h3> Packing Not Done Report Summary from ".date('d-m-Y',strtotime($tgl_a))." until ".date('d-m-Y',strtotime($tgl_b))." </h3>";
+echo "<h3>".$nmm."</h3><h3>Laporan Resi Belum Terpacking Periode ".date('d-m-Y',strtotime($tgl_a))." sampai ".date('d-m-Y',strtotime($tgl_b))." </h3>";
 ?>
 
 <h4>Grup Summary</h4>
@@ -18,7 +19,7 @@ echo "<h3>".$nmm."</h3><h3> Packing Not Done Report Summary from ".date('d-m-Y',
         <tr>
             <th style="text-align:center;">Nomor</th>
             <th style="text-align:center;">Grup Kurir</th>
-            <th style="text-align:center;">Qty Kirim</th>
+            <th style="text-align:center;">Qty Input</th>
         </tr>
 
 <?php 
@@ -46,12 +47,12 @@ echo "<h3>".$nmm."</h3><h3> Packing Not Done Report Summary from ".date('d-m-Y',
 
 
 </table>
-<h4>User Summary</h4>
+<h4>Total Akun User</h4>
 <table class="table table-striped table-hover">
         <tr>
             <th style="text-align:center;">Nomor</th>
             <th style="text-align:center;">User Name</th>
-            <th style="text-align:center;">Qty Kirim</th>
+            <th style="text-align:center;">Qty Input</th>
         </tr>
 
 <?php 
@@ -104,7 +105,7 @@ echo "<h3>".$nmm."</h3><h3> Packing Not Done Report Summary from ".date('d-m-Y',
 		}
 		?>
 		<tr>
-			<td colspan="2" style="text-align:center;">Jumlah Total Gagal Kirim</td>
+			<td colspan="2" style="text-align:center;">Jumlah Total Belum Terpacking</td>
 			<td style="text-align:center;"><?php echo number_format($i,0)?></td>
 		</tr>
 
@@ -116,7 +117,7 @@ echo "<h3>".$nmm."</h3><h3> Packing Not Done Report Summary from ".date('d-m-Y',
  <div class="row">
     <div class="box box-danger">
         <div class="box-header with-border">
-              <h3 class="box-title">Scan Input</h3>
+              <h3 class="box-title">Resi Input Vs Resi Packing</h3>
 
               <div class="box-tools pull-right">
                 <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>

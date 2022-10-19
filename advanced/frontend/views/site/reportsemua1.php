@@ -9,7 +9,8 @@ use scotthuangzl\googlechart\GoogleChart;
 $userx=User::findOne(Yii::$app->user->identity->id);
 $this->title=$userx->kompeni->nama;
 $nmm=$userx->kompeni->nama;
-echo "<h3>".$nmm."</h3><h3>Retur Report Summary from ".date('d-m-Y',strtotime($tgl_a))." until ".date('d-m-Y',strtotime($tgl_b))." </h3>";
+//echo "<h3>".$nmm."</h3><h3>Retur Report Summary from ".date('d-m-Y',strtotime($tgl_a))." until ".date('d-m-Y',strtotime($tgl_b))." </h3>";
+echo "<h3>".$nmm."</h3><h3>Laporan Resi Retur Periode  ".date('d-m-Y',strtotime($tgl_a))." sampai ".date('d-m-Y',strtotime($tgl_b))." </h3>";
 ?>
 
 <h4>Grup Summary</h4>
@@ -45,7 +46,7 @@ echo "<h3>".$nmm."</h3><h3>Retur Report Summary from ".date('d-m-Y',strtotime($t
 
 
 </table>
-<h4>User Summary</h4>
+<h4>Total Akun User</h4>
 <table class="table table-striped table-hover">
         <tr>
             <th style="text-align:center;">Nomor</th>
@@ -78,7 +79,7 @@ echo "<h3>".$nmm."</h3><h3>Retur Report Summary from ".date('d-m-Y',strtotime($t
 
     <div class="box box-info">
         <div class="box-header with-border">
-              <h3 class="box-title">Scan Retur</h3>
+              <h3 class="box-title">Resi Retur</h3>
 
               <div class="box-tools pull-right">
                 <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>

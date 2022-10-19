@@ -9,7 +9,8 @@ use scotthuangzl\googlechart\GoogleChart;
 $userx=User::findOne(Yii::$app->user->identity->id);
 $this->title=$userx->kompeni->nama;
 $nmm=$userx->kompeni->nama;
-echo "<h3>".$nmm."</h3><h3>Packing Done Report Summary from ".date('d-m-Y',strtotime($tgl_a))." until ".date('d-m-Y',strtotime($tgl_b))." </h3>";
+//echo "<h3>".$nmm."</h3><h3>Packing Done Report Summary from ".date('d-m-Y',strtotime($tgl_a))." until ".date('d-m-Y',strtotime($tgl_b))." </h3>";
+echo "<h3>".$nmm."</h3><h3>Laporan Total Resi Yang Sudah Terpacking Periode ".date('d-m-Y',strtotime($tgl_a))." sampai ".date('d-m-Y',strtotime($tgl_b))." </h3>";
 ?>
 
 <h4>Grup Summary</h4>
@@ -17,7 +18,7 @@ echo "<h3>".$nmm."</h3><h3>Packing Done Report Summary from ".date('d-m-Y',strto
         <tr>
             <th style="text-align:center;">Nomor</th>
             <th style="text-align:center;">Grup Kurir</th>
-            <th style="text-align:center;">Qty Kirim</th>
+            <th style="text-align:center;">Qty Terpacking</th>
         </tr>
 
 <?php 
@@ -45,12 +46,12 @@ echo "<h3>".$nmm."</h3><h3>Packing Done Report Summary from ".date('d-m-Y',strto
 
 
 </table>
-<h4>User Summary</h4>
+<h4>Total Akun User</h4>
 <table class="table table-striped table-hover">
         <tr>
             <th style="text-align:center;">Nomor</th>
             <th style="text-align:center;">User Name</th>
-            <th style="text-align:center;">Qty Kirim</th>
+            <th style="text-align:center;">Qty Terpacking</th>
         </tr>
 
 <?php 
@@ -79,7 +80,7 @@ echo "<h3>".$nmm."</h3><h3>Packing Done Report Summary from ".date('d-m-Y',strto
 
  <div class="box box-success">
         <div class="box-header with-border">
-              <h3 class="box-title">Scan Kirim</h3>
+              <h3 class="box-title">Resi Yang Sudah Terpacking</h3>
 
               <div class="box-tools pull-right">
                 <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
