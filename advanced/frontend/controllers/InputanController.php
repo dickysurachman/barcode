@@ -306,7 +306,8 @@ class InputanController extends Controller
         $pks = explode(',', $request->post( 'pks' )); // Array or selected records primary keys
         foreach ( $pks as $pk ) {
             //$model = $this->findModel($pk);
-            $mako=$this->findModel($id);
+            $mako = $this->findModel($pk);
+            //$mako=$this->findModel($id);
             $scan=Scan::findOne(['barcode'=>$mako->barcode,'id_perusahaan'=>Yii::$app->user->identity->id_perusahaan]);
             if(!isset($scan)){
                 $barr=Barcode::findOne(['barcode'=>$mako->barcode,'id_perusahaan'=>Yii::$app->user->identity->id_perusahaan]);
