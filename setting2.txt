@@ -1,0 +1,4 @@
+http://localhost/barcode/barcode/site/kirimbarcode.html
+5010
+l8mhWbT38y8WpBap1qlIeZ8DS5fQIz2Y_1666342253
+192.168.20.9

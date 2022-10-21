@@ -7,6 +7,14 @@ use yii\jui\DatePicker;
 /* @var $model app\models\Perusahaan */
 /* @var $form yii\widgets\ActiveForm */
 $tipe=['Aktif','Tidak Aktif'];
+$j= Yii::$app->security->generateRandomString() . '_' . time();
+
+$this->registerJs(
+    '$("#generateid").click(function(){
+        $("#perusahaan-serialkey").val("'.Yii::$app->security->generateRandomString() . '_' . time().'");
+    });'
+);
+
 ?>
 
 <div class="perusahaan-form">
@@ -45,6 +53,9 @@ $tipe=['Aktif','Tidak Aktif'];
     </div>
     <div class="col-md-2">
     <?= $form->field($model, 'limitan')->textInput(['maxlength' => true]) ?>
+    </div>
+    <div class="col-md-12">
+        <?= $form->field($model, 'serialkey',['labelOptions' => [ 'id' => 'generateid' ]])->textInput(['maxlength' => true])->label('Key (click for generate random key)') ?> 
     </div>
 
     <?php

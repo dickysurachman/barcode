@@ -28,6 +28,7 @@ use app\models\Usergrup;
 use app\models\Grup;
 use app\models\Inputan;
 use kartik\mpdf\Pdf;
+use app\models\Perusahaan;
 use app\models\Barcodeinput;
 use app\models\BarcodeinputSearch;
 use app\models\Barcoderetur;
@@ -942,6 +943,16 @@ class SiteController extends Controller
         ]);
     }
 
-
+     public function actionKirimbarcode($barcode,$key) {
+        $h=Perusahaan::find()->where(['serialkey'=>$key])->one();
+        if(isset($h)) {
+        $ipy=$_SERVER['REMOTE_ADDR'];
+        $simm=new Inputan();
+        $simm->barcode=$barcode;
+        $simm->ip=$ipy;
+        $simm->id_perusahaan=$h->id;
+        $simm->save();
+        } 
+    } 
 
 }

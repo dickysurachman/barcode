@@ -44,6 +44,7 @@ class Perusahaan extends \yii\db\ActiveRecord
             [['email'], 'string', 'max' => 150],
             [['kodebon'], 'string', 'max' => 3],
             [['logo_1','logo_2','logo_3'], 'string', 'max' => 200],
+            [['serialkey'], 'string', 'max' => 100],
             [['expiredate'],'safe'],
         ];
     }
@@ -63,6 +64,7 @@ class Perusahaan extends \yii\db\ActiveRecord
             'timer1' => 'Timer Scan (ms)',
             'timer2' => 'Timer Validasi (ms)',
             'kodebon' => 'Kode Transaksi',
+            'serialkey' => 'Secure Key',
             //'kodedepo' => 'Kode Deposit',
             //'kodeoutlet' => 'Kode Outlet',
             'telp' => 'Telp',

@@ -59,3 +59,8 @@ alter table `perusahaan` add expiredate date NULL;
 update `perusahaan` set expiredate=DATE_ADD(now(), INTERVAL 7 DAY);
 =============================
 alter table `contact` add barcode varchar(20) NULL;
+
+===================================
+alter table `perusahaan` add serialkey varchar(80) NULL; 
+alter table `inputan` add `ip` varchar(80) NULL; 
+ALTER TABLE `perusahaan` ADD INDEX(`serialkey`);
