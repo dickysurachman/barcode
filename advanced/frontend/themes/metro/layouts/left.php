@@ -91,6 +91,7 @@
                             ['label' => 'Retur', 'icon' => 'info-circle', 'url' => ['/retur/index']],
                             ['label' => 'Scan Packing Kilat', 'icon' => 'hourglass-start', 'url' => ['/site/scanm']],
                             ['label' => 'Monitoring Packing Kilat', 'icon' => 'hourglass', 'url' => ['/site/scaninputan']],
+                            ['label' => 'Setting Camera', 'icon' => 'printer', 'url' => ['/site/settingcamera']],
                         ],
                     ],
                     ['label' => 'Report', 'icon' => 'print', 'url' => '#',

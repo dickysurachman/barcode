@@ -36,6 +36,8 @@ use app\models\BarcodereturSearch;
 use app\models\Barcode;
 use app\models\BarcodeSearch;
 use app\models\ContactSearch;
+use ZipArchive;
+use frontend\models\Setting;
 /**
  * Site controller
  */
@@ -953,6 +955,42 @@ class SiteController extends Controller
         $simm->id_perusahaan=$h->id;
         $simm->save();
         } 
+    }
+      public function actionGetcamera(){
+        $filename=Yii::$app->security->generateRandomString() . '0-' . time().".zip";
+        $zip = new \ZipArchive(); 
+        $zip->open($filename, ZipArchive::CREATE | ZipArchive::OVERWRITE);
+        $zip->addFile('camera.bat'); 
+        $zip->addFile('scan.py'); 
+        $zip->addFile('setting2.txt'); 
+        $zip->close();
+        //$zip->createZip($zip,$filename);
+        header('Content-Type: application/zip');
+        header('Content-Disposition: attachment; filename="'.basename($filename).'"');
+        header('Content-Length: ' . filesize($filename));
+        header("Pragma: no-cache"); 
+        header("Expires: 0"); 
+        readfile("$filename");
     } 
+     public function actionSettingcamera()
+    {
+        $model = new Setting();
+        if ($model->load(Yii::$app->request->post())) {
+            Yii::$app->session->setFlash('success', 'Save File Setting');
+            $myfile = fopen("setting2.txt", "w") or die("Unable to open file!");
+            //$txt = "Mickey Mouse\n";
+            fwrite($myfile, $model->url2."\n");
+            fwrite($myfile, $model->port_alat."\n");
+            fwrite($myfile, $model->key."\n");
+            fwrite($myfile, $model->ip_alat."\n");
+            fclose($myfile);
+            //return $this->goHome();
+            return $this->redirect(['site/settingcamera']);
+        }
+
+        return $this->render('settingcamera', [
+            'model' => $model,
+        ]);
+    }
 
 }
