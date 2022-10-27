@@ -3,7 +3,7 @@ use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 use app\models\Grup;
 use yii\helpers\ArrayHelper;
-$provinsi=Grup::find()->where(['id_perusahaan'=>Yii::$app->user->identity->id_perusahaan])->orderBy(['nama' => SORT_ASC])->all();
+$provinsi=Grup::find()->orderBy(['nama' => SORT_ASC])->all();
 $kprovinsi=ArrayHelper::map($provinsi,'id','nama');
 /* @var $this yii\web\View */
 /* @var $model app\models\Kurir */
