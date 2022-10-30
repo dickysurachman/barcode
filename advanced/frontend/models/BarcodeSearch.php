@@ -21,7 +21,7 @@ class BarcodeSearch extends Barcode
     {
         return [
             [['id', 'add_who', 'edit_who','id_perusahaan'], 'integer'],
-            [['barcode', 'tanggal', 'add_date', 'edit_date','tgl_a','tgl_b'], 'safe'],
+            [['barcode', 'tanggal', 'add_date', 'edit_date','tgl_a','tgl_b','pesanan'], 'safe'],
         ];
     }
 
@@ -69,6 +69,7 @@ class BarcodeSearch extends Barcode
 
         $query->andFilterWhere(['like', 'barcode', $this->barcode])
          ->andFilterWhere(['>=', 'tanggal', $this->tgl_a])
+         ->andFilterWhere(['like', 'pesanan', $this->pesanan])
             ->andFilterWhere(['<=', 'tanggal', $this->tgl_b]);
 
         return $dataProvider;

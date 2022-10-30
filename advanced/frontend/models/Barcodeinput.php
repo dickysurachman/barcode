@@ -92,6 +92,7 @@ class Barcodeinput extends \yii\db\ActiveRecord
                 if(!$cek){
                     $simpan=new Barcode();
                     $simpan->barcode = $this->barcode;
+                    $simpan->pesanan= $this->pesanan;
                     $simpan->save();
                 }
 
