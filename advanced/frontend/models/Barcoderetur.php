@@ -61,7 +61,7 @@ class Barcoderetur extends \yii\db\ActiveRecord
             'alasan' => Yii::t('yii', 'Mark'),
             'id_perusahaan' => Yii::t('yii', 'Perusahaan'),
             'barcode' => Yii::t('yii', 'Barcode'),
-            'pesanan' => Yii::t('yii', 'No Invoice'),
+            'pesanan' => Yii::t('yii', 'No Pesanan'),
             'tanggal' => Yii::t('yii', 'Date'),
             'add_who' => Yii::t('yii', 'Add Who'),
             'edit_who' => Yii::t('yii', 'Edit Who'),
