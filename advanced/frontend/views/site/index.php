@@ -94,10 +94,10 @@ $this->title = 'Sistem Barcode';
     <?php
     if(isset($model->tgl_a) and isset($model->tgl_b)) {
 
-    $cekk=Yii::$app->db->createCommand("select c.nama,count(a.id) as total from barcode_retur a join scan b on a.barcode=b.barcode join grup c on b.id_grup=c.id where a.tanggal between '".$model->tgl_a."' and '".$model->tgl_b."' and b.id_perusahaan=".Yii::$app->user->identity->id_perusahaan." and a.id_perusahaan =".Yii::$app->user->identity->id_perusahaan." group by id_grup")->queryAll();
+    $cekk=Yii::$app->db->createCommand("select c.nama,count(a.id) as total from barcode_retur a join grup c on a.id_grup=c.id where a.tanggal between '".$model->tgl_a."' and '".$model->tgl_b."' and a.id_perusahaan =".Yii::$app->user->identity->id_perusahaan." group by id_grup")->queryAll();
     } else {
 
-    $cekk=Yii::$app->db->createCommand("select c.nama,count(a.id) as total from barcode_retur a join scan b on a.barcode=b.barcode join grup c on b.id_grup=c.id where b.id_perusahaan=".Yii::$app->user->identity->id_perusahaan." and a.id_perusahaan =".Yii::$app->user->identity->id_perusahaan." group by id_grup")->queryAll();
+    $cekk=Yii::$app->db->createCommand("select c.nama,count(a.id) as total from barcode_retur a join grup c on a.id_grup=c.id where  a.id_perusahaan =".Yii::$app->user->identity->id_perusahaan." group by id_grup")->queryAll();
     }
     //var_dump($cekk);
     $i=1;
