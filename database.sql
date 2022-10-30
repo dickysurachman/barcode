@@ -75,3 +75,6 @@ alter table `barcode_retur` add `pesanan` varchar(100) NULL;
 ALTER TABLE `barcode_retur`
   ADD KEY (`pesanan`);
 
+alter table `barcode` add `pesanan` varchar(100) NULL;
+ALTER TABLE `barcode`
+  ADD KEY (`pesanan`);
