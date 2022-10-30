@@ -21,7 +21,7 @@ class BarcodeinputSearch extends Barcodeinput
     {
         return [
             [['id', 'id_perusahaan', 'add_who', 'edit_who'], 'integer'],
-            [['nama_file', 'barcode', 'tanggal', 'add_date', 'edit_date','tgl_a','tgl_b'], 'safe'],
+            [['nama_file', 'barcode', 'tanggal', 'add_date', 'edit_date','tgl_a','tgl_b','pesanan'], 'safe'],
         ];
     }
 
@@ -71,6 +71,7 @@ class BarcodeinputSearch extends Barcodeinput
         $query->andFilterWhere(['like', 'nama_file', $this->nama_file])
         ->andFilterWhere(['>=', 'tanggal', $this->tgl_a])
             ->andFilterWhere(['<=', 'tanggal', $this->tgl_b])
+            ->andFilterWhere(['like', 'pesanan', $this->pesanan])
             ->andFilterWhere(['like', 'barcode', $this->barcode]);
 
         return $dataProvider;

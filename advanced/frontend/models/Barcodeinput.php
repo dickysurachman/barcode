@@ -40,6 +40,7 @@ class Barcodeinput extends \yii\db\ActiveRecord
             [[ 'add_date', 'edit_date','tanggal'], 'safe'],
             [['nama_file'], 'string', 'max' => 150],
             [['barcode'], 'string', 'max' => 50],
+            [['pesanan'], 'string', 'max' => 100],
             [['delimitt'], 'string', 'max' => 2],
             //[['csv'],'file'], 
             [['csv'], 'file', 'extensions' => 'csv']
@@ -56,6 +57,7 @@ class Barcodeinput extends \yii\db\ActiveRecord
             'nama_file' => Yii::t('yii', 'File Name'),
             'id_perusahaan' => Yii::t('yii', 'Company'),
             'barcode' => Yii::t('yii', 'Barcode'),
+            'pesanan' => Yii::t('yii', 'No Invoice'),
             'tanggal' => Yii::t('yii', 'Date'),
             'add_who' => Yii::t('yii', 'Add Who'),
             'edit_who' => Yii::t('yii', 'Edit Who'),

@@ -21,7 +21,7 @@ class BarcodereturSearch extends Barcoderetur
     {
         return [
             [['id', 'status', 'id_perusahaan', 'add_who', 'edit_who'], 'integer'],
-            [['alasan', 'barcode', 'tanggal', 'add_date', 'edit_date','tgl_a','tgl_b'], 'safe'],
+            [['alasan', 'barcode', 'tanggal', 'add_date', 'edit_date','tgl_a','tgl_b','pesanan'], 'safe'],
         ];
     }
 
@@ -71,6 +71,7 @@ class BarcodereturSearch extends Barcoderetur
 
         $query->andFilterWhere(['like', 'alasan', $this->alasan])
          ->andFilterWhere(['>=', 'tanggal', $this->tgl_a])
+         ->andFilterWhere(['like', 'pesanan', $this->pesanan])
             ->andFilterWhere(['<=', 'tanggal', $this->tgl_b])
             ->andFilterWhere(['like', 'barcode', $this->barcode]);
 

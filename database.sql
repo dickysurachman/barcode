@@ -64,3 +64,14 @@ alter table `contact` add barcode varchar(20) NULL;
 alter table `perusahaan` add serialkey varchar(80) NULL; 
 alter table `inputan` add `ip` varchar(80) NULL; 
 ALTER TABLE `perusahaan` ADD INDEX(`serialkey`);
+
+
+=======================================
+alter table `barcode_input` add `pesanan` varchar(100) NULL;
+ALTER TABLE `barcode_input`
+  ADD KEY (`pesanan`);
+
+alter table `barcode_retur` add `pesanan` varchar(100) NULL;
+ALTER TABLE `barcode_retur`
+  ADD KEY (`pesanan`);
+
