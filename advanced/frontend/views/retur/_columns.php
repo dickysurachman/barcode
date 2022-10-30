@@ -28,11 +28,11 @@ return [
     ],
     [
         'class'=>'\kartik\grid\DataColumn',
-        'attribute'=>'barcode',
-        'header'=>'Group',
-        'filter'=>false,
+        'attribute'=>'id_grup',
+        //'header'=>'Group',
+       // 'filter'=>false,
         'value'=>function ($model, $key, $index, $widget) { 
-                return isset($model->scann)?$model->scann->grup->nama:'';
+                return isset($model->grup)?$model->grup->nama:'';
         },
         //'filter'=>$kprovinsi,
     ],

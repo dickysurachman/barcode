@@ -34,7 +34,7 @@ class Barcoderetur extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['status', 'id_perusahaan', 'add_who', 'edit_who'], 'integer'],
+            [['status', 'id_perusahaan', 'add_who', 'edit_who','id_grup'], 'integer'],
             [['tanggal', 'add_date', 'edit_date'], 'safe'],
             [['alasan'], 'string', 'max' => 200],
             [['barcode'], 'string', 'max' => 50],
@@ -61,6 +61,7 @@ class Barcoderetur extends \yii\db\ActiveRecord
             'alasan' => Yii::t('yii', 'Mark'),
             'id_perusahaan' => Yii::t('yii', 'Perusahaan'),
             'barcode' => Yii::t('yii', 'Barcode'),
+            'id_grup' => Yii::t('yii', 'Expedition'),
             'pesanan' => Yii::t('yii', 'No Pesanan'),
             'tanggal' => Yii::t('yii', 'Date'),
             'add_who' => Yii::t('yii', 'Add Who'),
@@ -69,7 +70,10 @@ class Barcoderetur extends \yii\db\ActiveRecord
             'edit_date' => Yii::t('yii', 'Edit Date'),
         ];
     }
-
+    public function getGrup()
+    {
+        return $this->hasOne(Grup::className(), ['id' => 'id_grup']);
+    }
      public function getAdd()
     {
         return $this->hasOne(User::className(), ['id' => 'add_who']);
@@ -90,10 +94,84 @@ class Barcoderetur extends \yii\db\ActiveRecord
                 $this->id_perusahaan=Yii::$app->user->identity->id_perusahaan;
                 $this->add_who = Yii::$app->user->identity->id;
                 $this->add_date = date('Y-m-d H:i:s',time());
+
+
+                $sac=substr($this->barcode,0,2);
+            if($sac <>"88" and $sac <>"89" and $sac <>"90"){  
+            $h=Usergrup::find()->where(['id_user'=>Yii::$app->user->identity->id])->all();
+            foreach($h as $key2){
+                $k=Kurir::find()->where(['id_grup'=>$key2->id_grup,'status'=>0])->orderBy(['id'=>SORT_DESC])->all();
+                foreach($k as $key){
+                if($key->cari3==0) {
+                $cek1=strpos(" ".$this->barcode,$key->cari1);
+                } else {
+                $jml=strlen($key->cari1);
+                $awal=substr($this->barcode,0,$jml);
+                $ch=$key->cari1;
+                if($ch==$awal){
+                    $cek1=5;
+                } else {
+                    $cek1=0;
+                }
+                }
+                $h=strlen($this->barcode);
+                $hasil=true;
+                if($key->cari1=="0"){
+                    $hh=is_numeric($this->barcode);
+                    if($h==$key->cari2 and $hh==1){
+                        $hasil=true;
+                    } else {
+                        $hasil=false;
+                    }
+
+                }
+                if($cek1>0 and $h==$key->cari2 and $hasil==true){
+                        $this->id_grup=$key->grup->id;
+                        break;
+                }   
+                }
+                }
+                }
             return true;
         } else {
             $this->edit_who =Yii::$app->user->identity->id;
             $this->edit_date =  date('Y-m-d H:i:s',time());
+            $sac=substr($this->barcode,0,2);
+            if($sac <>"88" and $sac <>"89" and $sac <>"90"){  
+            $h=Usergrup::find()->where(['id_user'=>Yii::$app->user->identity->id])->all();
+            foreach($h as $key2){
+                $k=Kurir::find()->where(['id_grup'=>$key2->id_grup,'status'=>0])->orderBy(['id'=>SORT_DESC])->all();
+                foreach($k as $key){
+                if($key->cari3==0) {
+                $cek1=strpos(" ".$this->barcode,$key->cari1);
+                } else {
+                $jml=strlen($key->cari1);
+                $awal=substr($this->barcode,0,$jml);
+                $ch=$key->cari1;
+                if($ch==$awal){
+                    $cek1=5;
+                } else {
+                    $cek1=0;
+                }
+                }
+                $h=strlen($this->barcode);
+                $hasil=true;
+                if($key->cari1=="0"){
+                    $hh=is_numeric($this->barcode);
+                    if($h==$key->cari2 and $hh==1){
+                        $hasil=true;
+                    } else {
+                        $hasil=false;
+                    }
+
+                }
+                if($cek1>0 and $h==$key->cari2 and $hasil==true){
+                        $this->id_grup=$key->grup->id;
+                        break;
+                }   
+                }
+                }
+                }
             return false;
         }
     }

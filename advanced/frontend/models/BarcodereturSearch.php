@@ -20,7 +20,7 @@ class BarcodereturSearch extends Barcoderetur
     public function rules()
     {
         return [
-            [['id', 'status', 'id_perusahaan', 'add_who', 'edit_who'], 'integer'],
+            [['id', 'status', 'id_perusahaan', 'add_who', 'edit_who','id_grup'], 'integer'],
             [['alasan', 'barcode', 'tanggal', 'add_date', 'edit_date','tgl_a','tgl_b','pesanan'], 'safe'],
         ];
     }
@@ -65,6 +65,7 @@ class BarcodereturSearch extends Barcoderetur
             'tanggal' => $this->tanggal,
             'add_who' => $this->add_who,
             'edit_who' => $this->edit_who,
+            'id_grup' => $this->id_grup,
             'add_date' => $this->add_date,
             'edit_date' => $this->edit_date,
         ]);

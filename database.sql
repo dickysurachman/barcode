@@ -78,3 +78,4 @@ ALTER TABLE `barcode_retur`
 alter table `barcode` add `pesanan` varchar(100) NULL;
 ALTER TABLE `barcode`
   ADD KEY (`pesanan`);
+alter table `barcode_retur` add `id_grup` int(11) NULL;
