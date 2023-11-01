@@ -1,3 +1,3 @@
 @echo off
 
-python scan.py
+node server.js

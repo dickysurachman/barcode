@@ -949,11 +949,20 @@ class SiteController extends Controller
         $h=Perusahaan::find()->where(['serialkey'=>$key])->one();
         if(isset($h)) {
         $ipy=$_SERVER['REMOTE_ADDR'];
+            //echo 'dapat'.$ipy."ini".$h->id."ini".$barcode;
         $simm=new Inputan();
         $simm->barcode=$barcode;
         $simm->ip=$ipy;
-        $simm->id_perusahaan=$h->id;
+        $simm->id_perusahaan=intval($h->id);
         $simm->save();
+            //var_dump($simm);
+            /*$simm1=new Inputan();
+            $simm1->barcode="cccccccadadad";
+            $simm1->ip="::1";
+            $simm1->id_perusahaan="1";
+            $simm1->save();*/
+        } else {
+            echo 'tidak dapat';
         } 
     }
       public function actionGetcamera(){
@@ -961,7 +970,8 @@ class SiteController extends Controller
         $zip = new \ZipArchive(); 
         $zip->open($filename, ZipArchive::CREATE | ZipArchive::OVERWRITE);
         $zip->addFile('camera.bat'); 
-        $zip->addFile('scan.py'); 
+//        $zip->addFile('scan.py'); 
+        $zip->addFile('server.js'); 
         $zip->addFile('setting2.txt'); 
         $zip->close();
         //$zip->createZip($zip,$filename);
@@ -972,6 +982,8 @@ class SiteController extends Controller
         header("Expires: 0"); 
         readfile("$filename");
     } 
+
+
      public function actionSettingcamera()
     {
         $model = new Setting();

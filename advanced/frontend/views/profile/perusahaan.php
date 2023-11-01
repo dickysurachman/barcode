@@ -10,6 +10,7 @@ use kartik\file\FileInput;
 <div class="perusahaan-form">
 
     <?php $form = ActiveForm::begin(['options' => ['enctype' => 'multipart/form-data']]); ?>
+    <h4>Serial Key : <?=$model->serialkey?></h4>
     <div class="col-md-6">
     <?= $form->field($model, 'nama')->textInput(['maxlength' => true]) ?>
     </div>
