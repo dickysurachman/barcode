@@ -30,6 +30,15 @@ $kolom=[
         'class'=>'\kartik\grid\DataColumn',
         'attribute'=>'barcode',
     ],
+     [
+        'class'=>'\kartik\grid\DataColumn',
+        'attribute'=>'status',
+        'header'=>'No Pesanan',
+        'filter'=>false,
+        'value'=>function ($model, $key, $index, $widget) { 
+                return isset($model->input)?$model->input->pesanan:'';
+        },
+     ],
       [
         'class'=>'\kartik\grid\DataColumn',
         'attribute'=>'barcode',
@@ -47,7 +56,7 @@ $kolom=[
         'value'=>function ($model, $key, $index, $widget) { 
                 return isset($model->input)?$model->input->add_date:'NO ENTRY / NO DATA';
         },
-     ],
+     ],  
     [
         'class'=>'\kartik\grid\DataColumn',
         'attribute'=>'status',

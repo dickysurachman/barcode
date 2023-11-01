@@ -141,6 +141,7 @@ class InputanController extends Controller
                         $barang->tanggal = $model->tanggal;
                         $barang->nama_file = $file1;
                         $barang->barcode = $row[1];
+                        $barang->pesanan = $row[2];
                         $barang->save();                    
                 }
 
@@ -154,6 +155,7 @@ class InputanController extends Controller
                         $barang->nama_file = $file1;
                         $barang->tanggal = $model->tanggal;
                         $barang->barcode = $row[1];
+                        $barang->pesanan = $row[2];
                         $barang->save();    
                         }                        
                 }

@@ -89,7 +89,7 @@ echo "<h3>".$nmm."</h3><h3>Laporan Resi Retur Periode  ".date('d-m-Y',strtotime(
             </div>
     <div class="box-body no-padding">            
     <?php
-    $cekk=Yii::$app->db->createCommand("select c.nama,count(a.id) as total from barcode_retur a join scan b on a.barcode=b.barcode join grup c on b.id_grup=c.id where a.tanggal between '".$tgl_a."' and '".$tgl_b."' and b.id_perusahaan=".Yii::$app->user->identity->id_perusahaan." and a.id_perusahaan =".Yii::$app->user->identity->id_perusahaan." group by id_grup")->queryAll();
+    $cekk=Yii::$app->db->createCommand("select c.nama,count(a.id) as total from barcode_retur a join grup c on a.id_grup=c.id where a.tanggal between '".$tgl_a."' and '".$tgl_b."' and a.id_perusahaan =".Yii::$app->user->identity->id_perusahaan." group by id_grup")->queryAll();
     //var_dump($cekk);
     $i=1;
     $datar[0][]='Label';

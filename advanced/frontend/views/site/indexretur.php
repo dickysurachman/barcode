@@ -29,15 +29,18 @@ $kolom=[
     ],   
     [
         'class'=>'\kartik\grid\DataColumn',
+        'attribute'=>'pesanan',
+    ],[
+        'class'=>'\kartik\grid\DataColumn',
         'attribute'=>'barcode',
     ],
     [
         'class'=>'\kartik\grid\DataColumn',
-        'attribute'=>'barcode',
-        'header'=>'Expedition',
+        'attribute'=>'id_grup',
+        //'header'=>'Expedition',
         'filter'=>false,
         'value'=>function ($model, $key, $index, $widget) { 
-                return isset($model->scann)?$model->scann->grup->nama:'';
+                return isset($model->grup)?$model->grup->nama:'';
         },
         //'filter'=>$kprovinsi,
     ],

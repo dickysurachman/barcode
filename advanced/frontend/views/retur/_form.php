@@ -11,7 +11,7 @@ use yii\jui\DatePicker;
 
     <?php $form = ActiveForm::begin(); ?>
     <div class="row"> 
-    <div class="col-md-6">
+    <div class="col-md-4">
     <label>Date</label>
     <?php
     echo DatePicker::widget([
@@ -24,7 +24,10 @@ use yii\jui\DatePicker;
     ]]);
     ?>
     </div>
-    <div class="col-md-6">
+    <div class="col-md-4">
+    <?= $form->field($model, 'pesanan')->textInput(['maxlength' => true]) ?>
+    </div>
+    <div class="col-md-4">
     <?= $form->field($model, 'barcode')->textInput(['maxlength' => true]) ?>
     </div>
     </div>
